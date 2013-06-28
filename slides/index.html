@@ -27,30 +27,49 @@
       ul.morespace {
         padding-top: 30px;
       }
-      h1.morespace, h2.morespace {
+      h1.morespace, h2.morespace, h3.morespace {
         padding-bottom: 20px;
       }
-      .blue {
+      .reveal .blue {
         color:#3284ae;
       }
-      .purple {
+      .reveal .purple {
         color:#a749ff;
       }
-      .red {
+      .reveal .red {
         color:#ff5649;
       }
-      .yellow {
+      .reveal .yellow {
         color:#ffcc49;
       }
-      .green {
+      .reveal .green {
         color:#88ff49;
       }
-      .grey {
+      .reveal .grey {
         color:#838383;
       }
 
       ul.morespace  > li {
-        padding-bottom: 10px;
+        padding-bottom: 20px;
+      }
+      .reveal section img.noeff {
+        border: 0px;
+        box-shadow: 0 0 0 0px;
+        margin: 0px;
+      }
+      .reveal section img.fit {
+        max-height: 90%;
+      }
+      section img.space {
+        margin: 10px !important;
+      }
+      section img.morespace {
+        margin: 20px !important;
+      }
+
+      .reveal thead td {
+        text-align: center;
+        padding-bottom: 20px;
       }
     </style>
 
@@ -64,23 +83,112 @@
 		<div class="reveal">
 			<!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-
         <section>
-          <h1 class="morespace">Hello, ggplot2</h1>
-          <h3>Taiwan R Users Group</h3>
-          <h3>2013.07.01</h3>          
-          <p>
+          <h3 style="margin-bottom: 40px;">Taiwan R Users Group, 2013.07.01</h3>          
+          <h1 style="margin-bottom: 60px;">Hello, ggplot2</h1>
+          <p style="margin-bottom: 40px;">
             <i>Introduce high-level R plotting package <a href="http://ggplot2.org/" target='_blank'>ggplot2</a></i>
           </p>
-          <p>
-            <small>Created by <a href="http://about.me/lbwang" target='_blank'>Liang Bo Wang</a>. </small>
-            <small>Source code on <a href="http://github.com/ccwang002/ggplot2-tutorial">GitHub</a></small>
-          </p>
+          <p><small>
+            Slide and sources code are on
+            <a href="http://github.com/ccwang002/ggplot2-tutorial" target="_blank">GitHub</a>. <br />
+            Made by <a href="http://about.me/lbwang" target='_blank'>Liang Bo Wang</a> under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC 3.0 BY-SA</a> license.
+          </small></p>
         </section>
-
+<!-- About me -->
         <section>
-					<h1>THE END</h1>
-          <img src="pic/dailylife_chibird.png"/>
+          <h2>About me</h2>
+          <table border="0">
+              <tr>
+                <td style=" vertical-align: top">
+                  <ul class="morespace">
+                    <li>王亮博 or 亮亮</li>
+                    <li>台大電機 四年級</li>
+                    <li class="fragment blue">太弱所以要繼續唸第五年</li>
+                    <li>專題研究 @ NTU Center <br />
+                    of Genomics Medicine</li>
+                    <li>Bioinformatics &amp; 
+                    Biostatistics</li>
+                    <li>about.me/lbwang</li> 
+                </ul></td>
+                <td><img src="pics/head.jpg" alt="Head Photo" /></td>
+              </tr>
+          </table>
+        </section>
+        <section>
+          <h2 class="morespace">今天主題</h2> 
+          <p>除了畫圖，還是畫圖</p>
+          <p class="fragment grey">…… 聽起來有點 Low</p>
+        </section>
+        <section>
+          <h2>想像一個情境 …</h2>
+        </section>
+        <section>
+          <h2>Deadline 前夕</h2>
+          <img src="pics/deadline.jpg" alt="" />
+          <p><small>source: <a href="http://doingsomethingmoreforgod.blogspot.tw/2010/11/deadline-for-applications-fast_20.html">doingsomethingmoreforgod.blogspot.tw</a></small></p>
+        </section>
+        <section>
+          <h2>等於開工的時候</h2>
+          <img src="pics/deadline_eff.jpg" alt="" />
+          <p><small>source: <a href="http://www.hksilicon.com/kb/articles/112626/deadlineFinish">hksilicon.com</a></small></p>
+        </section>
+        <section>
+          <h2 class="morespace">很容易生出這種圖表</h2>
+          <table>
+            <thead><tr><td>excel</td> <td>matlab</td></tr></thead>
+            <tbody><tr>
+              <td><img class="noeff" src="pics/excel_default.png"/></td>
+              <td><img class="noeff" src="pics/matlab_default.gif"/></td>
+            </tr></tbody>
+          </table>
+        </section>
+        <section>
+          <h2>其實還不少 …</h2>
+          <table>
+            <tr>
+              <td><img class="noeff" src="pics/google_excel.png" alt="" /></td>
+              <td><img class="noeff" src="pics/google_matlab.png" alt="" /></td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h2>不好看…… <span class="fragment red">而且老闆會生氣</span></h2>
+        </section>
+        <section>
+          <p>如果是 ggplot2 …</p>
+          <img class="noeff fit" src="pics/google_ggplot2.png" alt="" />
+        </section>
+        <section>
+          <h2><span class="red">Reason</span> to use R and ggplot2</h2>
+          <ul class="morespace">
+            <li><span class="blue">預設值</span>即提供很好的樣式組合（style and layout）</li>
+            <li>各類型圖皆能以<span class="blue">簡單指令</span>完成（high-level）</li>
+            <li>以<span class="blue">圖層</span>的方式，有系統建構複雜、整合性圖表</li>
+            <li><span class="blue">搭配 R</span> 統計分析，直接呈現資料樣貌</li>
+          </ul>
+        </section>
+        <section>
+          <h2>今天的目標</h2>
+          <table>
+            <tr>
+              <td>
+                <ul class="morespace">
+                  <li>如何在短時間內完成高質量的圖表</li>
+                  <li>了解 ggplot2 設計，能自行閱讀官方文件</li>
+                  <li class="fragment grey">讓老闆開心，順利畢業 </li>
+                </ul>
+              </td>
+              <td style="vertical-align: bottom; width: 20%">
+                <img class="noeff" src="pics/chibird_happy.png">
+              </td>
+            </tr>
+          </table>
+        </section>
+<!-- THE END -->
+        <section>
+					<h2>Q &amp; A</h2> 
+          <img class="noeff" src="pics/chibird_end.jpg"/>
 				</section>
 
       </div><!-- slides -->
