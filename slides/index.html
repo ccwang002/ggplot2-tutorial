@@ -164,6 +164,19 @@
           <p>如果是 ggplot2 …</p>
           <img class="noeff fit" src="pics/google_ggplot2.png" alt="" />
         </section>
+        <section style='text-align: center'>
+          <h3>Basic R Plot vs ggplot2</h3>
+          <pre><code class="language-r" data-trim contenteditable>
+# basic plot
+plot(mtcars$wt, mtcars$mpg)
+
+# using ggplot2
+library(ggplot2)
+qplot(wt, mpg, data=mtcars)
+          </code></pre>
+              <p><img class="noeff" src="pics/R_basic.png" alt="" />
+              <img class="noeff" src="pics/R_ggplot2.png" alt="" /></p>
+        </section>
         <section>
           <h2><span class="red">Reason</span> to use R and ggplot2</h2>
           <ul class="morespace">
@@ -204,12 +217,12 @@
           <h2>參考書</h2>
           <table>
             <tr>
-              <td><img width="90%" src="pics/R_graphics_cookbook.jpg" alt="" /></td>
-              <td><img width="90%" src="pics/R_cookbook.jpg" alt="" /></td>
-              <td><img width="90%" src="pics/R_graphics.jpg" alt="" /></td>
+              <td><img width="80%" src="pics/R_graphics_cookbook.jpg" /></td>
+              <td><img width="80%" src="pics/R_cookbook.jpg" /></td>
+              <td><img width="80%" src="pics/R_graphics.jpg"  /></td>
             </tr>
             <tr class="center">
-              <td><span class="yellow">主要</span>參考這本</td>
+              <td><span class="red">主要</span>參考這本</td>
               <td>R 基礎語法</td>
               <td>包含 ggplot2 等<br /> R 圖形套件</td>
             </tr>
@@ -218,14 +231,45 @@
         </section>
 <!-- TOC -->
         <section>
-          <h2 class="morespace">Topics</h2>
+          <h2 class="morespace">目錄</h2>
           <ul>
-            <li class="grey">A</li>
-            <li class="grey">B</li>
+            <li class="grey">輸入資料</li>
+            <li class="grey">快速瀏覽資料</li>
             <li class="grey">C</li>
             <li class="grey">D</li>
           </ul>
         </section>
+
+<!-- 如何適當地整理資料 -->
+        <section>
+          <h2 class="morespace">什麼樣的資料適合作圖？</h2>
+          <ul class="morespace">
+            <li><span class="red">1 row = 1 observation</span> 的 <code>data.frame</code>, <code>csv</code>, ... 檔案</li>
+            <li>不符合此格式的資料，可以透過 Python, R, sed/awk/.../ 等程式來整理</li>
+          </ul>
+          <pre><code class="language-r" data-trim contenteditable>
+# in namelist.csv
+# data should be one observation per row
+"First", "Last", "Sex", "Birth"
+"Liang Bo", "Wang", "Male", "1991-01-01"
+"Otsuka", "Ai", "Female", "1999-01-01"
+
+# read from csv file
+data <- read.csv("namelist.csv", 
+                 stringsAsFactors=FALSE,
+                 comment.char='#')
+data$Sex <- factor(data$Sex)
+str(data)
+          </code></pre>
+        </section>
+
+<!-- 快速瀏覽資料 -->
+        <section>
+          <h2>Give the Data a Quick View</h2>
+          <p>using <code>qplot()</code></p>
+          <p>code: <a href="http://github.com/ccwang002/ggplot2/examples/ex_01"><i>ex_01</i></a></p>
+        </section>
+<!-- syntax for R code highlighting -->
         <section>
           <p>test code</p>
 <pre><code class='language-r' data-trim contenteditable>
@@ -235,6 +279,23 @@ r <- function(a){
 }
 </code></pre>
         </section>
+
+<!-- Combine multiple vectors into one vector and a factor -->
+<!--        <section>
+          <h3 class="morespace">多個 Vectors <=> 1 Vector + 1 Factor</h3>
+<pre><code class="language-r" data-trim contenteditable>
+v1 <- 1:6
+v2 <- 7:12
+v3 <- 1:10
+
+# stack
+comb <- stack(list(v1=v1, v2=v2, v3=v3))
+
+# unstack
+orig <- unstack(comb)
+</code></pre>
+        </section>
+        -->
 <!-- THE END -->
         <section>
 					<h2>Q &amp; A</h2> 
