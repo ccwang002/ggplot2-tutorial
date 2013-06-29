@@ -16,8 +16,7 @@ View the slides @local
 One can simply ``git clone`` this repository or download the `zip`__ file the extract it.
 
 Open the file ``slides/index.html`` in browser (javascript may be needed) then one can enjoy the slide locally.
-
-If the slide is viewed offline, then some font style may be losted.
+If viewed offline, some css(font) style may be lost.
 
 __ https://github.com/ccwang002/ggplot2-tutorial/archive/master.zip
 
