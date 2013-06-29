@@ -24,6 +24,18 @@
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
     <style type="text/css">
+      .reveal .controls div.slide-number {
+        width: 25px;
+        left: 27px;
+        top: 33px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: .5em;
+        font-weight: bold;
+        opacity: .5;
+        color: #111;
+      }
+
       ul.morespace {
         padding-top: 30px;
       }
@@ -411,6 +423,7 @@ orig <- unstack(comb)
 				]
 			});
 
+      // for pagenumber
       function currentSlideNumber(event) {
         var formattedStr;
         if (event.indexh === 0) {
