@@ -10,10 +10,27 @@ The content itself is licensed under a `Creative Commons Attribution-ShareAlike 
 __ http://creativecommons.org/licenses/by-sa/3.0/
 
 
-View the slides @local
-======================
+Introduction
+============
 
-One can simply ``git clone`` this repository or download the `zip`__ file the extract it.
+This repo contains the slides for presentation at `Taiwan R User Group`_ and the corresponding R example code.
+
+.. _Taiwan R User Group: http://www.meetup.com/Taiwan-R/
+
+
+View the Slides
+===============
+
+Online
+------
+
+Simply open the link http://ccwang002.github.io/ggplot2-tutorial/ will do.
+
+
+@local
+------
+
+One can ``git clone`` this repository or download the `zip`__ file then extract it to get full source.
 
 Open the file ``slides/index.html`` in browser (javascript may be needed) then one can enjoy the slide locally.
 If viewed offline, some css(font) style may be lost.
