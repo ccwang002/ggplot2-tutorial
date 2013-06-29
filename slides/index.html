@@ -67,9 +67,31 @@
         margin: 20px !important;
       }
 
+      .reveal thead td {
+        padding-bottom: 20px;
+      }        
+
       .reveal thead td, .reveal tr.center td{
         text-align: center;
-        padding-bottom: 20px;
+      }
+
+      .reveal p.top{
+        margin-bottom: -10px;
+        line-height: 1em;
+      }
+
+      .reveal kbd {
+        background-color: #ededed;
+        border-color: #dbdbdb;
+        color: #222222;
+        border-style: solid;
+        border-width: 1px;
+        margin: 0;
+        font-family: "Consolas", "Menlo", "Courier", monospace;
+        font-size: 0.875em;
+        padding: 0.125em 0.3em 0em;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
       }
     </style>
 
@@ -83,171 +105,175 @@
 		<div class="reveal">
 			<!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section>
-          <h3 style="margin-bottom: 40px;">Taiwan R Users Group, 2013.07.01</h3>          
-          <h1 style="margin-bottom: 60px;">Hello, ggplot2</h1>
-          <p style="margin-bottom: 40px;">
-            <i>Introduce high-level R plotting package <a href="http://ggplot2.org/" target='_blank'>ggplot2</a></i>
-          </p>
-          <p><small>
-            Slide and sources code are on
-            <a href="http://github.com/ccwang002/ggplot2-tutorial" target="_blank">GitHub</a>. <br />
-            Made by <a href="http://about.me/lbwang" target='_blank'>Liang Bo Wang</a> under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC 3.0 BY-SA</a> license.
-          </small></p>
-        </section>
+<!-- Title Page -->
+<section>
+  <h3 style="margin-bottom: 40px;">Taiwan R Users Group, 2013.07.01</h3>          
+  <h1 style="margin-bottom: 60px;">Hello, ggplot2</h1>
+  <p style="margin-bottom: 40px;">
+    <i>Introduce high-level R plotting package <a href="http://ggplot2.org/" target='_blank'>ggplot2</a></i>
+  </p>
+  <p><small>
+    Slide and sources code are on
+    <a href="http://github.com/ccwang002/ggplot2-tutorial" target="_blank">GitHub</a>. <br />
+    Made by <a href="http://about.me/lbwang" target='_blank'>Liang Bo Wang</a> under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC 3.0 BY-SA</a> license.
+  </small></p>
+
+  <p><small>Use <kbd>←</kbd> <kbd>→</kbd> or <kbd>PgUp</kbd> <kbd>PgDn</kbd> to view the slide <br /> <kbd>Esc</kbd> for an overview.</small></p>
+</section>
 <!-- About me -->
-        <section>
-          <h2>About me</h2>
-          <table border="0">
-              <tr>
-                <td style=" vertical-align: top">
-                  <ul class="morespace">
-                    <li>王亮博 or 亮亮</li>
-                    <li>台大電機 四年級</li>
-                    <li class="fragment blue">太弱所以要繼續唸第五年</li>
-                    <li>專題研究 @ NTU Center <br />
-                    of Genomics Medicine</li>
-                    <li>Bioinformatics &amp; 
-                    Biostatistics</li>
-                    <li>about.me/lbwang</li> 
-                </ul></td>
-                <td><img src="pics/head.jpg" alt="Head Photo" /></td>
-              </tr>
-          </table>
-        </section>
+<section>
+  <h2>About me</h2>
+  <table border="0">
+      <tr>
+        <td style=" vertical-align: top">
+          <ul class="morespace">
+            <li>王亮博 or 亮亮</li>
+            <li>台大電機 四年級</li>
+            <li class="fragment blue">太弱所以要繼續唸第五年</li>
+            <li>專題研究 @ NTU Center <br />
+            of Genomics Medicine</li>
+            <li>Bioinformatics &amp; 
+            Biostatistics</li>
+            <li>about.me/lbwang</li> 
+        </ul></td>
+        <td><img src="pics/head.jpg" alt="Head Photo" /></td>
+      </tr>
+  </table>
+</section>
 <!-- Today's Topic and Scenario -->
-        <section>
-          <h2 class="morespace">今天主題</h2> 
-          <p>除了畫圖，還是畫圖</p>
-          <p class="fragment grey">…… 聽起來有點 Low</p>
-        </section>
-        <section>
-          <h2>想像一個情境 …</h2>
-        </section>
-        <section>
-          <h2>Deadline 前夕</h2>
-          <img src="pics/deadline.jpg" alt="" />
-          <p><small>
-            source: <a href="http://doingsomethingmoreforgod.blogspot.tw/2010/11/deadline-for-applications-fast_20.html">doingsomethingmoreforgod.blogspot.tw</a>
-          </small></p>
-        </section>
-        <section>
-          <h2>等於開工的時候</h2>
-          <img src="pics/deadline_eff.jpg" alt="" />
-          <p><small>
-            source: <a href="http://www.hksilicon.com/kb/articles/112626/deadlineFinish">hksilicon.com</a>
-          </small></p>
-        </section>
-        <section>
-          <h2 class="morespace">很容易生出這種圖表</h2>
-          <table>
-            <thead><tr><td>excel</td> <td>matlab</td></tr></thead>
-            <tbody><tr>
-              <td><img class="noeff" src="pics/excel_default.png"/></td>
-              <td><img class="noeff" src="pics/matlab_default.gif"/></td>
-            </tr></tbody>
-          </table>
-        </section>
-        <section>
-          <h2>其實還不少 …</h2>
-          <table>
-            <tr>
-              <td><img class="noeff" src="pics/google_excel.png" alt="" /></td>
-              <td><img class="noeff" src="pics/google_matlab.png" alt="" /></td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>不好看…… <span class="fragment red">而且老闆會生氣</span></h2>
-        </section>
-        <section>
-          <p>如果是 ggplot2 …</p>
-          <img class="noeff fit" src="pics/google_ggplot2.png" alt="" />
-        </section>
-        <section style='text-align: center'>
-          <h3>Basic R Plot vs ggplot2</h3>
-          <pre><code class="language-r" data-trim contenteditable>
+<section>
+  <h2 class="morespace">今天主題</h2> 
+  <p>除了畫圖，還是畫圖</p>
+  <p class="fragment grey">…… 聽起來有點 Low</p>
+</section>
+<section>
+  <h2>想像一個情境 …</h2>
+</section>
+<section>
+  <h2>Deadline 前夕</h2>
+  <img src="pics/deadline.jpg" alt="" />
+  <p><small>
+    source: <a href="http://doingsomethingmoreforgod.blogspot.tw/2010/11/deadline-for-applications-fast_20.html">doingsomethingmoreforgod.blogspot.tw</a>
+  </small></p>
+</section>
+<section>
+  <h2>等於開工的時候</h2>
+  <img src="pics/deadline_eff.jpg" alt="" />
+  <p><small>
+    source: <a href="http://www.hksilicon.com/kb/articles/112626/deadlineFinish">hksilicon.com</a>
+  </small></p>
+</section>
+<section>
+  <h2 class="morespace">很容易生出這種圖表</h2>
+  <table>
+    <thead><tr><td>excel</td> <td>matlab</td></tr></thead>
+    <tbody><tr>
+      <td><img class="noeff" src="pics/excel_default.png"/></td>
+      <td><img class="noeff" src="pics/matlab_default.gif"/></td>
+    </tr></tbody>
+  </table>
+</section>
+<section>
+  <h2 class="morespace">其實還不少 …</h2>
+  <table>
+    <tr>
+      <td><img class="noeff" src="pics/google_excel.png" alt="" /></td>
+      <td><img class="noeff" src="pics/google_matlab.png" alt="" /></td>
+    </tr>
+  </table>
+</section>
+<section>
+  <h2>不好看…… <span class="fragment red">而且老闆會生氣</span></h2>
+</section>
+<section>
+  <h3 class="morespace">如果是 ggplot2 …</h3>
+  <img class="noeff fit" src="pics/google_ggplot2.png" alt="" />
+</section>
+<section style='text-align: center'>
+  <h3>Basic R Plot vs ggplot2</h3>
+  <pre><code class="language-r" data-trim contenteditable>
 # basic plot
 plot(mtcars$wt, mtcars$mpg)
 
 # using ggplot2
 library(ggplot2)
 qplot(wt, mpg, data=mtcars)
-          </code></pre>
-              <p><img class="noeff" src="pics/R_basic.png" alt="" />
-              <img class="noeff" src="pics/R_ggplot2.png" alt="" /></p>
-        </section>
-        <section>
-          <h2><span class="red">Reason</span> to use R and ggplot2</h2>
-          <ul class="morespace">
-            <li><span class="blue">預設值</span>即提供很好的樣式組合（style and layout）</li>
-            <li>各類型圖皆能以<span class="blue">簡單指令</span>完成（high-level）</li>
-            <li>以<span class="blue">圖層</span>的方式，有系統建構複雜、整合性圖表</li>
-            <li><span class="blue">搭配 R</span> 統計分析，直接呈現資料樣貌</li>
-          </ul>
-        </section>
+  </code></pre>
+      <p><img class="noeff" src="pics/R_basic.png" alt="" />
+      <img class="noeff" src="pics/R_ggplot2.png" alt="" /></p>
+</section>
+<section>
+  <h2><span class="red">Reason</span> to use R and ggplot2</h2>
+  <ul class="morespace">
+    <li><span class="blue">預設值</span>即提供很好的樣式組合（style and layout）</li>
+    <li>各類型圖皆能以<span class="blue">簡單指令</span>完成（high-level）</li>
+    <li>以<span class="blue">圖層</span>的方式，有系統建構複雜、整合性圖表</li>
+    <li><span class="blue">搭配 R</span> 統計分析，直接呈現資料樣貌</li>
+  </ul>
+</section>
 <!-- GOAL -->
-        <section>
-          <h2>今天的目標</h2>
-          <table>
-            <tr>
-              <td>
-                <ul class="morespace">
-                  <li>如何在短時間內完成高質量的圖表</li>
-                  <li>了解 ggplot2 設計，能自行閱讀官方文件</li>
-                  <li class="fragment grey">讓老闆開心，順利畢業 </li>
-                </ul>
-              </td>
-              <td style="vertical-align: bottom; width: 20%">
-                <img class="noeff" src="pics/chibird_happy.png">
-              </td>
-            </tr>
-          </table>
-        </section>
-        <section>
-          <h2>今天可能無法講到的主題</h2>
-          <ul class="morespace">
-            <li>資料前處理</li>
-            <li>圖表資料結構 hack</li>
-            <li>細部調整 → 麻煩參考官網說明 or 參考書</li>
-          </ul>
-        </section>
+<section>
+  <h2>今天的目標</h2>
+  <table>
+    <tr>
+      <td>
+        <ul class="morespace">
+          <li>如何在短時間內完成高質量的圖表</li>
+          <li>了解 ggplot2 設計，能自行閱讀官方文件</li>
+          <li class="fragment grey">讓老闆開心，順利畢業 </li>
+        </ul>
+      </td>
+      <td style="vertical-align: bottom; width: 20%">
+        <img class="noeff" src="pics/chibird_happy.png">
+      </td>
+    </tr>
+  </table>
+</section>
+<section>
+  <h2>今天可能無法講到的主題</h2>
+  <ul class="morespace">
+    <li>資料前處理</li>
+    <li>圖表資料結構 hack</li>
+    <li>細部調整 → 麻煩參考官網說明 or 參考書</li>
+  </ul>
+</section>
 <!-- Reference -->
-        <section>
-          <h2>參考書</h2>
-          <table>
-            <tr>
-              <td><img width="80%" src="pics/R_graphics_cookbook.jpg" /></td>
-              <td><img width="80%" src="pics/R_cookbook.jpg" /></td>
-              <td><img width="80%" src="pics/R_graphics.jpg"  /></td>
-            </tr>
-            <tr class="center">
-              <td><span class="red">主要</span>參考這本</td>
-              <td>R 基礎語法</td>
-              <td>包含 ggplot2 等<br /> R 圖形套件</td>
-            </tr>
-          </table>
-          <p class='grey'>臺灣應該都買得到 Ex. 天壠書局</p>
-        </section>
+<section>
+  <h2>參考書</h2>
+  <table>
+    <tr class="center">
+      <td><img width="80%" src="pics/R_graphics_cookbook.jpg" /></td>
+      <td><img width="80%" src="pics/R_cookbook.jpg" /></td>
+      <td><img width="80%" src="pics/R_graphics.jpg"  /></td>
+    </tr>
+    <tr class="center">
+      <td><span class="red">主要</span>參考這本</td>
+      <td>R 基礎語法</td>
+      <td>包含 ggplot2 等<br /> R 圖形套件</td>
+    </tr>
+  </table>
+  <p class='grey'>臺灣應該都買得到 Ex. 天壠書局</p>
+</section>
 <!-- TOC -->
-        <section>
-          <h2 class="morespace">目錄</h2>
-          <ul>
-            <li class="grey">輸入資料</li>
-            <li class="grey">快速瀏覽資料</li>
-            <li class="grey">C</li>
-            <li class="grey">D</li>
-          </ul>
-        </section>
+<section>
+  <h2>目錄</h2>
+  <ul class="morespace">
+    <li class="grey">輸入資料</li>
+    <li class="grey">快速瀏覽資料</li>
+    <li class="grey">C</li>
+    <li class="grey">D</li>
+  </ul>
+</section>
 
 <!-- 如何適當地整理資料 -->
-        <section>
-          <h2 class="morespace">什麼樣的資料適合作圖？</h2>
-          <ul class="morespace">
-            <li><span class="red">1 row = 1 observation</span> 的 <code>data.frame</code>, <code>csv</code>, ... 檔案</li>
-            <li>不符合此格式的資料，可以透過 Python, R, sed/awk/.../ 等程式來整理</li>
-          </ul>
-          <pre><code class="language-r" data-trim contenteditable>
+<section>
+  <h2 class="morespace">什麼樣的資料適合作圖？</h2>
+  <ul class="morespace">
+    <li><span class="red">1 row = 1 observation</span> 的 <code>data.frame</code>, <code>csv</code>, ... 檔案</li>
+    <li>格式奇怪的資料，可以透過 Python, R, sed/awk/... 來整理</li>
+    <li>可以直接問問 <a href="http://stackoverflow.com/">Stack Overflow</a> 大神</li>
+  </ul>
+  <pre><code class="language-r" data-trim contenteditable>
 # in namelist.csv
 # data should be one observation per row
 "First", "Last", "Sex", "Birth"
@@ -259,26 +285,74 @@ data <- read.csv("namelist.csv",
                  stringsAsFactors=FALSE,
                  comment.char='#')
 data$Sex <- factor(data$Sex)
-str(data)
-          </code></pre>
-        </section>
+str(data)   # view data.frame structure
+  </code></pre>
+</section>
 
-<!-- 快速瀏覽資料 -->
-        <section>
-          <h2>Give the Data a Quick View</h2>
-          <p>using <code>qplot()</code></p>
-          <p>code: <a href="http://github.com/ccwang002/ggplot2/examples/ex_01"><i>ex_01</i></a></p>
-        </section>
+<!-- Quick 快速瀏覽資料 -->
+<section id="quick-view">
+  <h2 class="morespace">Give Data a <span class="purple">Quick</span> View</h2>
+  <p>using <span class="red">basic</span> R plot, <code class="red">ggplot()</code> 
+  and <code class="red">qplot()</code></p>
+  <p>sample code: <a href="http://github.com/ccwang002/ggplot2/examples/ex_01" target='_blank'>ex_01</a></p>
+</section>
+<!-- quick: scatter -->
+<section id="quick-scatter">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace">Scatter Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# basic
+plot(mtcars$wt, mtcars$mpg)
+# qplot()
+qplot(mtcars$wt, mtcars$mpg)
+qplot(wt, mpg, data=mtcars)  # if they are in same data.frame
+# ggplot()
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center">
+      <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" src="pics/ex_01/scatter_basic.png" alt="" /></td>
+      <td><img class="noeff" src="pics/ex_01/scatter_ggplot.png" alt="" /></td>
+    </tr>
+  </table>
+</section>
+<!-- quick-line -->
+<section id="quick-line">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace">Line Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# === basic ===
+plot(pressure$temperature, pressure$pressure, type="l")
+points(pressure$temperature, pressure$pressure)
+# === qplot() ===
+qplot(pressure$temperature, pressure$pressure, geom=c('line', 'point'))
+# === ggplot() ===
+ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
+  </code></pre>
+  <table style='width: 100%; max-width: 100%'>
+    <tr class="center">
+      <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" src="pics/ex_01/line_basic.png" alt="" /></td>
+      <td><img class="noeff" src="pics/ex_01/line_ggplot.png" alt="" /></td>
+    </tr>
+  </table>
+</section>
+
 <!-- syntax for R code highlighting -->
-        <section>
-          <p>test code</p>
-<pre><code class='language-r' data-trim contenteditable>
+<section>
+  <p>test code</p>
+  <pre><code class='language-r' data-trim contenteditable>
 library(ggplot2)
 r <- function(a){
   cat('hello')
 }
-</code></pre>
-        </section>
+  </code></pre>
+</section>
 
 <!-- Combine multiple vectors into one vector and a factor -->
 <!--        <section>
@@ -321,6 +395,7 @@ orig <- unstack(comb)
 				progress: true,
 				history: true,
 				center: true,
+        rollingLinks: true,
 
 				theme: Reveal.getQueryHash().theme , // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
