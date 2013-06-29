@@ -13,9 +13,9 @@ __ http://creativecommons.org/licenses/by-sa/3.0/
 Introduction
 ============
 
-This repo contains the slides for presentation at `Taiwan R User Group`_ and the corresponding R example code.
+This repo contains the slides for presentation given at `Taiwan R User Group`_  meet up and the corresponding R example code.
 
-.. _Taiwan R User Group: http://www.meetup.com/Taiwan-R/
+.. _Taiwan R User Group: http://www.meetup.com/Taiwan-R/events/125697962/
 
 
 View the Slides
