@@ -24,6 +24,18 @@
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
     <style type="text/css">
+      .reveal .controls div.slide-number {
+        width: 25px;
+        left: 27px;
+        top: 33px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: .5em;
+        font-weight: bold;
+        opacity: .5;
+        color: #111;
+      }
+
       ul.morespace {
         padding-top: 30px;
       }
@@ -411,7 +423,27 @@ orig <- unstack(comb)
 				]
 			});
 
-		</script>
+      // for pagenumber
+      function currentSlideNumber(event) {
+        var formattedStr;
+        if (event.indexh === 0) {
+          return '';
+        }
+        formattedStr = event.indexh;
+        if (event.indexv) {
+          formattedStr += '/' + event.indexv;
+        }
+        return formattedStr;
+      }
+      // fires on slide change
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.slide-number').innerText = currentSlideNumber(event);
+      });
+      //
+      var slideNumberDiv = document.createElement('div');
+      slideNumberDiv.classList.add('slide-number');
+      document.querySelector('.controls').appendChild(slideNumberDiv);
+    </script>
 
 	</body>
 </html>
