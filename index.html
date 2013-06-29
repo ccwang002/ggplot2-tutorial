@@ -119,7 +119,7 @@
       <div class="slides">
 <!-- Title Page -->
 <section>
-  <h3 style="margin-bottom: 40px;">Taiwan R Users Group, 2013.07.01</h3>          
+  <h3 style="margin-bottom: 40px;">Taiwan R User Group, 2013.07.01</h3>          
   <h1 style="margin-bottom: 60px;">Hello, ggplot2</h1>
   <p style="margin-bottom: 40px;">
     <i>Introduce high-level R plotting package <a href="http://ggplot2.org/" target='_blank'>ggplot2</a></i>
@@ -307,7 +307,7 @@ str(data)   # view data.frame structure
   <p>using <span class="red">basic</span> R plot, <code class="red">ggplot()</code> 
   and <code class="red">qplot()</code></p>
   <p>sample code: 
-    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_01" target='_blank'>ex_01</a>
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_01_quick" target='_blank'>ex_01</a>
   </p>
 </section>
 <!-- quick: scatter -->
@@ -315,12 +315,12 @@ str(data)   # view data.frame structure
   <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
   <h3 class="morespace">Scatter Plot</h3>
   <pre><code class="language-r" data-trim contenteditable>
-# basic
+# === basic ===
 plot(mtcars$wt, mtcars$mpg)
-# qplot()
+# === qplot() ===
 qplot(mtcars$wt, mtcars$mpg)
 qplot(wt, mpg, data=mtcars)  # if they are in same data.frame
-# ggplot()
+# === ggplot() ===
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
   </code></pre>
   <table style='width: 100%'>
