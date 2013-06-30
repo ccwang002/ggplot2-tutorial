@@ -540,24 +540,25 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
   </table>
 </section>
 
-<!-- Box Plot Section ========= -->
-<section id="box">
-  <h2 class="morespace"><span class="purple">Box</span> Plots</h2>
+<!-- Bar Plot Section ========= -->
+<section id="bar">
+  <h2 class="morespace"><span class="purple">Bar</span> Plots</h2>
   <p>sample code: 
-    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_box" target='_blank'>ex_box</a>
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_bar" target='_blank'>ex_bar</a>
   </p>
   <p style="margin-top: 50px;"><small>
-    <a href="#/box-fill-color">Fill, Color</a> |
-    <a href="#/box-group-dodge">Group (Dodge)</a> |
+    <a href="#/bar-fill-color">Fill, Color</a> |
+    <a href="#/bar-group-dodge">Group (Dodge)</a> |
+    <a href="#/bar-color-theme">Color Theme (Palette)</a> |
   </small></p>
 </section>
 
-<!-- box-fill-color -->
-<section id="box-fill-color">
+<!-- bar-fill-color -->
+<section id="bar-fill-color">
   <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
-    or back to <a href="#/box">Box</a></small></p>
+    or back to <a href="#/bar">Bar</a></small></p>
   <h3 class="morespace">Set <span class="red">Fill</span> 
-    and <span class="red">Color</span> for Box Plot</h3>
+    and <span class="red">Color</span> for Bar Plot</h3>
   <pre><code class="language-r" data-trim contenteditable>
 # use facters as x-axis
 weekabbrv <- c('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')
@@ -576,18 +577,18 @@ ggplot(BOD, aes(x=week, y=demand, color=week)) + geom_bar(stat='identity')
       <td></td>
     </tr>
     <tr>
-      <td><img class="noeff" width="290px" src="pics/ex_box/fill_single.png"/></td>
-      <td><img class="noeff" width="290px" src="pics/ex_box/fill_aes_fill.png"/></td>
-      <td><img class="noeff" width="290px" src="pics/ex_box/fill_aes_color.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_bar/fill_single.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_bar/fill_aes_fill.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_bar/fill_aes_color.png"/></td>
     </tr>
   </table>
 </section>
 
-<!-- box-group-dodge -->
-<section id="box-group-dodge">
+<!-- bar-group-dodge -->
+<section id="bar-group-dodge">
   <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
-    or back to <a href="#/box">Box</a></small></p>
-  <h3 class="morespace"><span class="red">Grouping</span> Box Plot 
+    or back to <a href="#/bar">Bar</a></small></p>
+  <h3 class="morespace"><span class="red">Grouping</span> Bar Plot 
     by <span class="blue">Dodging</span></h3>
   <pre><code class="language-r" data-trim contenteditable>
 library(gcookbook)   # import required data sets
@@ -606,17 +607,17 @@ ggplot(cabbage_exp, aes(x=interaction(Cultivar, Date), y=Weight, fill=Cultivar))
       <td>group</td><td>interaction</td>
     </tr>
     <tr>
-      <td><img class="noeff" width="440px" src="pics/ex_box/group_group.png"/></td>
-      <td><img class="noeff" width="440px" src="pics/ex_box/group_interaction.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_bar/group_group.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_bar/group_interaction.png"/></td>
     </tr>
   </table>
 </section>
 
-<!-- box-color-theme -->
-<section id="box-color-theme">
+<!-- bar-color-theme -->
+<section id="bar-color-theme">
   <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
-    or back to <a href="#/box">Box</a></small></p>
-  <h3 class="morespace">First into <span class="red">Color Theme</span> using Box Plot</h3>
+    or back to <a href="#/bar">Bar</a></small></p>
+  <h3 class="morespace">First into <span class="red">Color Theme</span> using Bar Plot</h3>
   <pre><code class="language-r" data-trim contenteditable>
 library(gcookbook)
 g <- ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
@@ -633,9 +634,9 @@ ggplot(cabbage_exp, aes(x=Cultivar, y=Weight, fill=Date)) +
     More on colors, go to <a href="#/somewhere">somewhere else</a></small></p>
   <table style='width: 100%'>
     <tr>
-      <td><img class="noeff" width="290px" src="pics/ex_box/color_palette_1.png"/></td>
-      <td><img class="noeff" width="290px" src="pics/ex_box/color_palette_2.png"/></td>
-      <td><img class="noeff" width="290px" src="pics/ex_box/color_palette_3.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_bar/color_palette_1.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_bar/color_palette_2.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_bar/color_palette_3.png"/></td>
     </tr>
   </table>
 </section>
