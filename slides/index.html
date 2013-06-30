@@ -133,7 +133,7 @@
     Made by <a href="http://about.me/lbwang" target='_blank'>Liang Bo Wang</a> under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC 3.0 BY-SA</a> license.
   </small></p>
 
-  <p><small><kbd>←</kbd> <kbd>→</kbd> <kbd>PgUp</kbd> <kbd>PgDn</kbd> to navigate and <kbd>Esc</kbd> for an overview.</small></p>
+  <p><small><kbd>←</kbd> <kbd>→</kbd> <kbd>PgUp</kbd> <kbd>PgDn</kbd> to navigate, <kbd>f</kbd> for fullscreen and <kbd>Esc</kbd> for an overview.</small></p>
 </section>
 <!-- About me -->
 <section>
@@ -286,7 +286,7 @@ qplot(wt, mpg, data=mtcars)
   <ul class="morespace">
     <li><span class="red">1 row = 1 observation</span> 的 <code>data.frame</code>, <code>csv</code>, ... 檔案</li>
     <li>格式奇怪的資料，可以透過 Python, R, sed/awk/... 來整理</li>
-    <li>可以直接問問 <a href="http://stackoverflow.com/">Stack Overflow</a> 大神</li>
+    <li>找方法，不如直接問問 <a href="http://stackoverflow.com/">Stack Overflow</a> 大神</li>
   </ul>
   <pre><code class="language-r" data-trim contenteditable>
 # in namelist.csv
@@ -312,6 +312,7 @@ str(data)   # view data.frame structure
   <p>sample code: 
     <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_quick" target='_blank'>ex_quick</a>
   </p>
+  <p style="margin-top: 50px;"><small><a href="#/quick-scatter">Scatter</a> | <a href="#/quick-line">Line</a></small></p>
 </section>
 <!-- quick: scatter -->
 <section id="quick-scatter">
@@ -349,7 +350,7 @@ qplot(pressure$temperature, pressure$pressure, geom=c('line', 'point'))
 # === ggplot() ===
 ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
   </code></pre>
-  <table style='width: 100%; max-width: 100%'>
+  <table style='width: 100%'>
     <tr class="center">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
@@ -379,7 +380,9 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
   <p class='fragment'>Open Data? 不如試試<span class="blue">教育部</span>的統計資料</p>
 </section>
 <section>
-  <p>教育部 → 重要教育統計資訊</p>
+  <p>教育部 → 重要教育統計資訊 
+    (<a href="http://www.edu.tw/pages/detail.aspx?Node=3378&Page=14083&Index=5" target='_blank'>link</a>)
+  </p>
   <a href="http://www.edu.tw/pages/detail.aspx?Node=3378&Page=14083&Index=5" target='_blank'>
     <img class="fit" src="pics/TW_MinistryEdu.png" alt="" />
   </a>
@@ -399,11 +402,12 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
 <section id="twpt">
   <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
   <h3>大學學測總級分人數分布</h3>
+  <img src="pics/TWPT_raw.png" alt="" />
+  <p class="fragment">ggplot2 馬上就可以派上用場</p>
+  <p class="fragment">但這筆資料很奇怪，分別存成 1, 2, 3 三檔</p>
+  <p><small>相關整理過程放在 <code>twPT2013.csv</code>, <code>read_csv.R</code> 中</small></p>
+</section>
 
-</section>
-<section>
-  
-</section>
 
 <!-- Combine multiple vectors into one vector and a factor -->
 <!--        <section>
