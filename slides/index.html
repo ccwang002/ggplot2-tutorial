@@ -548,6 +548,7 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
   </p>
   <p style="margin-top: 50px;"><small>
     <a href="#/box-fill-color">Fill, Color</a> |
+    <a href="#/box-group-dodge">Group (Dodge)</a> |
   </small></p>
 </section>
 
@@ -580,9 +581,65 @@ ggplot(BOD, aes(x=week, y=demand, color=week)) + geom_bar(stat='identity')
       <td><img class="noeff" width="290px" src="pics/ex_box/fill_aes_color.png"/></td>
     </tr>
   </table>
-
-
 </section>
+
+<!-- box-group-dodge -->
+<section id="box-group-dodge">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/box">Box</a></small></p>
+  <h3 class="morespace"><span class="red">Grouping</span> Box Plot 
+    by <span class="blue">Dodging</span></h3>
+  <pre><code class="language-r" data-trim contenteditable>
+library(gcookbook)   # import required data sets
+
+# === Grouping ===
+# group var: Cultivar (determine the 'fill' color)
+ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+  geom_bar(stat='identity', position='dodge')
+
+# === Interaction ===
+ggplot(cabbage_exp, aes(x=interaction(Cultivar, Date), y=Weight, fill=Cultivar)) + 
+  geom_bar(stat='identity')
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td>group</td><td>interaction</td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_box/group_group.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_box/group_interaction.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- box-color-theme -->
+<section id="box-color-theme">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/box">Box</a></small></p>
+  <h3 class="morespace">First into <span class="red">Color Theme</span> using Box Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+library(gcookbook)
+g <- ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+  geom_bar(stat='identity', position='dodge', color='brown')
+
+# use different color themes, i.e., palettes
+g + scale_fill_brewer(palette='Pastel1')  # try 'Blues' or 'Oranges'
+
+ggplot(cabbage_exp, aes(x=Cultivar, y=Weight, fill=Date)) + 
+  geom_bar(stat='identity', position='dodge', color='black') + 
+  scale_fill_brewer(palette='Blues')
+  </code></pre>
+  <p style='margin-bottom: 0px; line-height: 1em;'><small>
+    More on colors, go to <a href="#/somewhere">somewhere else</a></small></p>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="290px" src="pics/ex_box/color_palette_1.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_box/color_palette_2.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_box/color_palette_3.png"/></td>
+    </tr>
+  </table>
+</section>
+
 
 <!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
 <section>
