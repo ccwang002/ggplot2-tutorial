@@ -330,6 +330,7 @@ str(data)   # view data.frame structure
     <a href="#/quick-fnt">Function</a>
   </small></p>
 </section>
+
 <!-- quick: scatter -->
 <section id="quick-scatter">
   <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
@@ -539,6 +540,49 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
   </table>
 </section>
 
+<!-- Box Plot Section ========= -->
+<section id="box">
+  <h2 class="morespace"><span class="purple">Box</span> Plots</h2>
+  <p>sample code: 
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_box" target='_blank'>ex_box</a>
+  </p>
+  <p style="margin-top: 50px;"><small>
+    <a href="#/box-fill-color">Fill, Color</a> |
+  </small></p>
+</section>
+
+<!-- box-fill-color -->
+<section id="box-fill-color">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/box">Box</a></small></p>
+  <h3 class="morespace">Set <span class="red">Fill</span> 
+    and <span class="red">Color</span> for Box Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# use facters as x-axis
+weekabbrv <- c('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')
+BOD$week <- factor(BOD$Time, levels=1:7, labels=weekabbrv)
+
+# try denoting single fill/outline(colour) color
+g <- ggplot(BOD, aes(x=week, y=demand)) 
+g + geom_bar(stat='identity', fill='lightpink', color='black')
+
+# using aes() to denote variable-dependent aesthetics 
+ggplot(BOD, aes(x=week, y=demand, fill=week)) + geom_bar(stat='identity')
+ggplot(BOD, aes(x=week, y=demand, color=week)) + geom_bar(stat='identity')
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="290px" src="pics/ex_box/fill_single.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_box/fill_aes_fill.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_box/fill_aes_color.png"/></td>
+    </tr>
+  </table>
+
+
+</section>
 
 <!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
 <section>
@@ -627,6 +671,7 @@ orig <- unstack(comb)
     The set of images are made by 
     <a href="http://chibird.com" target='_blank'>chibird</a>.
   </small></p>
+  <p>Take this slide home from <br /> <a href="http://ccwang002.github.io/ggplot2-tutorial">http://ccwang002.github.io/ggplot2-tutorial</a></p>
 </section>
 
       </div><!-- slides -->
