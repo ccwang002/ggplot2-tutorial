@@ -52,13 +52,16 @@
         color:#ff5649;
       }
       .reveal .yellow {
-        color:#ffcc49;
+        color:#ffaa20;
       }
       .reveal .green {
         color:#88ff49;
       }
       .reveal .grey {
         color:#838383;
+      }
+      .reveal .pink {
+        color:#D8344F;
       }
 
       ul.morespace  > li {
@@ -88,6 +91,11 @@
 
       .reveal thead td, .reveal tr.center td{
         text-align: center;
+      }
+
+      .reveal tr.small {
+        font-size: .6em;
+        line-height: .85em;
       }
 
       .reveal p.top{
@@ -166,14 +174,14 @@
 </section>
 <section>
   <h2>Deadline 前夕</h2>
-  <img src="pics/deadline.jpg" alt="" />
+  <img src="pics/deadline.jpg"/>
   <p><small>
     source: <a href="http://doingsomethingmoreforgod.blogspot.tw/2010/11/deadline-for-applications-fast_20.html">doingsomethingmoreforgod.blogspot.tw</a>
   </small></p>
 </section>
 <section>
   <h2>等於開工的時候</h2>
-  <img src="pics/deadline_eff.jpg" alt="" />
+  <img src="pics/deadline_eff.jpg"/>
   <p><small>
     source: <a href="http://www.hksilicon.com/kb/articles/112626/deadlineFinish">hksilicon.com</a>
   </small></p>
@@ -192,8 +200,8 @@
   <h2 class="morespace">其實還不少 …</h2>
   <table>
     <tr>
-      <td><img class="noeff" src="pics/google_excel.png" alt="" /></td>
-      <td><img class="noeff" src="pics/google_matlab.png" alt="" /></td>
+      <td><img class="noeff" src="pics/google_excel.png"/></td>
+      <td><img class="noeff" src="pics/google_matlab.png"/></td>
     </tr>
   </table>
 </section>
@@ -202,7 +210,7 @@
 </section>
 <section>
   <h3 class="morespace">如果是 ggplot2 …</h3>
-  <img class="noeff fit" src="pics/google_ggplot2.png" alt="" />
+  <img class="noeff fit" src="pics/google_ggplot2.png"/>
 </section>
 <section style='text-align: center'>
   <h3>Basic R Plot vs ggplot2</h3>
@@ -214,8 +222,8 @@ plot(mtcars$wt, mtcars$mpg)
 library(ggplot2)
 qplot(wt, mpg, data=mtcars)
   </code></pre>
-      <p><img class="noeff" src="pics/R_basic.png" alt="" />
-      <img class="noeff" src="pics/R_ggplot2.png" alt="" /></p>
+      <p><img class="noeff" src="pics/R_basic.png"/>
+      <img class="noeff" src="pics/R_ggplot2.png"/></p>
 </section>
 <section>
   <h2><span class="red">Reason</span> to use R and ggplot2</h2>
@@ -312,54 +320,212 @@ str(data)   # view data.frame structure
   <p>sample code: 
     <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_quick" target='_blank'>ex_quick</a>
   </p>
-  <p style="margin-top: 50px;"><small><a href="#/quick-scatter">Scatter</a> | <a href="#/quick-line">Line</a></small></p>
+  <p style="margin-top: 50px;"><small>
+    <a href="#/quick-scatter">Scatter</a> |
+    <a href="#/quick-line">Line</a> |
+    <a href="#/quick-bar">Bar</a> | 
+    <a href="#/quick-bar-count">Bar Count</a> | 
+    <a href="#/quick-hist">Histogram</a> | 
+    <a href="#/quick-box">Box</a> | 
+    <a href="#/quick-fnt">Function</a>
+  </small></p>
 </section>
 <!-- quick: scatter -->
 <section id="quick-scatter">
   <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
-  <h3 class="morespace">Scatter Plot</h3>
+  <h3 class="morespace"><span class="red">Scatter</span> Plot</h3>
   <pre><code class="language-r" data-trim contenteditable>
-# === basic ===
+# basic
 plot(mtcars$wt, mtcars$mpg)
-# === qplot() ===
+# qplot()
 qplot(mtcars$wt, mtcars$mpg)
 qplot(wt, mpg, data=mtcars)  # if they are in same data.frame
-# === ggplot() ===
+# ggplot()
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
   </code></pre>
   <table style='width: 100%'>
-    <tr class="center">
+    <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
     <tr>
-      <td><img class="noeff" src="pics/ex_quick/scatter_basic.png" alt="" /></td>
-      <td><img class="noeff" src="pics/ex_quick/scatter_ggplot.png" alt="" /></td>
+      <td><img class="noeff" width='440px' src="pics/ex_quick/scatter_basic.png"/></td>
+      <td><img class="noeff" width='440px' src="pics/ex_quick/scatter_ggplot.png"/></td>
     </tr>
   </table>
 </section>
 <!-- quick-line -->
 <section id="quick-line">
   <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
-  <h3 class="morespace">Line Plot</h3>
+  <h3 class="morespace"><span class="red">Line</span> Plot</h3>
   <pre><code class="language-r" data-trim contenteditable>
-# === basic ===
+# basic
 plot(pressure$temperature, pressure$pressure, type="l")
 points(pressure$temperature, pressure$pressure)
-# === qplot() ===
+# qplot()
 qplot(pressure$temperature, pressure$pressure, geom=c('line', 'point'))
-# === ggplot() ===
+# ggplot()
 ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
   </code></pre>
   <table style='width: 100%'>
-    <tr class="center">
+    <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
     <tr>
-      <td><img class="noeff" src="pics/ex_quick/line_basic.png" alt="" /></td>
-      <td><img class="noeff" src="pics/ex_quick/line_ggplot.png" alt="" /></td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/line_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/line_ggplot.png"/></td>
     </tr>
   </table>
 </section>
+
+<!-- quick-bar -->
+<section id="quick-bar">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace"><span class="red">Bar</span> Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# basic
+barplot(BOD$demand, names.arg=BOD$Time)
+# qplot()
+qplot(factor(Time), demand, data=BOD, geom="bar", stat="identity")
+# ggplot()
+ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat='identity')
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/bar_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/bar_ggplot.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- quick-bar-count -->
+<section id="quick-bar-count">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace"><span class="red">Bar</span> Plot by <span class="blue">Counting</span></h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# basic
+barplot(table(mtcars$cyl))
+# qplot()
+qplot(factor(mtcars$cyl))
+# ggplot()
+ggplot(mtcars, aes(x=factor(cyl))) + geom_bar()
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/bar_count_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/bar_count_ggplot.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- quick-hist -->
+<section id="quick-hist">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace"><span class="red">Histogram</span> of 1-D data</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# basic
+hist(mtcars$mpg, breaks=10)
+# qplot()
+qplot(mpg, data=mtcars, binwidth=5)
+# ggplot()
+ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=5)
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/hist_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/hist_ggplot.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- quick-box -->
+<section id="quick-box">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace"><span class="red">Box</span> Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable data-noescape>
+# basic <span class="pink">(NOTE: outliers are different from ggplot results!)</span>
+plot(ToothGrowth$supp, ToothGrowth$len, names=levels(ToothGrowth$supp))
+boxplot(len ~ supp, data=ToothGrowth)   # boxplot using formula syntax
+boxplot(len ~ supp + dose, data=ToothGrowth)  # interaction: supp, dose
+# qplot()
+qplot(supp, len, data=ToothGrowth, geom='boxplot')
+qplot(interaction(supp, dose), len, data=ToothGrowth, geom='boxplot')
+# ggplot()
+ggplot(ToothGrowth, aes(x=supp, y=len)) + geom_boxplot()
+ggplot(ToothGrowth, aes(x=interaction(supp, dose), y=len)) + geom_boxplot()
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td colspan='2'>basic</td><td colspan='2'><code>qplot()</code> or <code>ggplot()</code></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="150px" src="pics/ex_quick/box_basic.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_quick/box_group_basic.png"/></td>
+      <td><img class="noeff" width="150px" src="pics/ex_quick/box_ggplot.png"/></td>
+      <td><img class="noeff" width="290px" src="pics/ex_quick/box_group_ggplot.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- quick-fnt -->
+<section id="quick-fnt">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace"><span class="red">Function</span> Curve</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# basic
+curve(x^3 - 7*x, from=-4, to=4)
+
+# plot a user-defined function
+# in: numeric vector, out: numeric vector
+cumfun <- function(xvec) 1/(1 + exp(-xvec + 5))
+
+curve(cumfun(x), from=0, to=10)
+curve(1-cumfun(x), add=TRUE, col='green')   # append to same figure
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td>basic</td><td>basic (self-defined function)</td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/fnt_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/fnt_self_basic.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- quick-fnt (cont'd) -->
+<section id="quick-fnt-cont">
+  <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
+  <h3 class="morespace"><span class="red">Function</span> Curve (cont'd)</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# qplot()
+qplot(c(0, 10), fun=cumfun, stat='function', geom='line')
+# ggplot()
+g <- ggplot(data.frame(x=c(0, 10)), aes(x=x))   # store it first
+g + stat_function(fun=cumfun, geom='line')  # try geom='point'
+  </code></pre>
+  <table style='width: 100%'>
+    <tr class="center small">
+      <td><code>ggplot()</code></td><td><code>ggplot()</code> (self-defined function)</td>
+    </tr>
+    <tr>
+      <td width='440px' style='vertical-align: middle; text-align: center;'>
+        <p class="pink">no straight forward way</p>
+        <p><small>try wrapped by a function</small></p>
+      </td>
+      <td><img class="noeff" width="440px" src="pics/ex_quick/fnt_self_ggplot.png"/></td>
+    </tr>
+  </table>
+</section>
+
 
 <!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
 <section>
@@ -384,7 +550,7 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
     (<a href="http://www.edu.tw/pages/detail.aspx?Node=3378&Page=14083&Index=5" target='_blank'>link</a>)
   </p>
   <a href="http://www.edu.tw/pages/detail.aspx?Node=3378&Page=14083&Index=5" target='_blank'>
-    <img class="fit" src="pics/TW_MinistryEdu.png" alt="" />
+    <img class="fit" src="pics/TW_MinistryEdu.png"/>
   </a>
 </section>
 <section>
@@ -394,7 +560,7 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
 <section id="edu-dataset">
   <h3>使用的資料表</h3>
   <ul class="morespace">
-    <li>近年來大學學科能力測驗（學測）總級分人數分布 <a href="#/twpt">→</a></li>
+    <li>近年來大學學科能力測驗（學測）總級分人數分布 <a href="#/twpt">go →</a></li>
   </ul>
 </section>
 
@@ -402,10 +568,14 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
 <section id="twpt">
   <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
   <h3>大學學測總級分人數分布</h3>
-  <img src="pics/TWPT_raw.png" alt="" />
+  <img src="pics/TWPT_raw.png"/>
   <p class="fragment">ggplot2 馬上就可以派上用場</p>
-  <p class="fragment">但這筆資料很奇怪，分別存成 1, 2, 3 三檔</p>
-  <p><small>相關整理過程放在 <code>twPT2013.csv</code>, <code>read_csv.R</code> 中</small></p>
+  <div class="fragment">
+    <p>但這筆資料很奇怪，分別存成 1, 2, 3 三檔</p>
+    <p><small>
+      相關整理過程放在 <code>twPT2013.csv</code>, <code>read_csv.R</code> 中
+    </small></p>
+  </div>
 </section>
 
 

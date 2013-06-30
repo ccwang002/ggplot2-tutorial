@@ -1,5 +1,4 @@
-# always load ggplot2 library first
-library(ggplot2)
+library(ggplot2)    # always load ggplot2 library first
 
 # === basic ===
 plot(mtcars$wt, mtcars$mpg)
