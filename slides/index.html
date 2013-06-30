@@ -72,6 +72,9 @@
       .reveal section img.fit {
         max-height: 90%;
       }
+      .reveal section img.small {
+        max-height: 80%;
+      }
       section img.space {
         margin: 10px !important;
       }
@@ -307,7 +310,7 @@ str(data)   # view data.frame structure
   <p>using <span class="red">basic</span> R plot, <code class="red">ggplot()</code> 
   and <code class="red">qplot()</code></p>
   <p>sample code: 
-    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_01_quick" target='_blank'>ex_01</a>
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_quick" target='_blank'>ex_quick</a>
   </p>
 </section>
 <!-- quick: scatter -->
@@ -328,8 +331,8 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
     <tr>
-      <td><img class="noeff" src="pics/ex_01/scatter_basic.png" alt="" /></td>
-      <td><img class="noeff" src="pics/ex_01/scatter_ggplot.png" alt="" /></td>
+      <td><img class="noeff" src="pics/ex_quick/scatter_basic.png" alt="" /></td>
+      <td><img class="noeff" src="pics/ex_quick/scatter_ggplot.png" alt="" /></td>
     </tr>
   </table>
 </section>
@@ -351,21 +354,55 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
     <tr>
-      <td><img class="noeff" src="pics/ex_01/line_basic.png" alt="" /></td>
-      <td><img class="noeff" src="pics/ex_01/line_ggplot.png" alt="" /></td>
+      <td><img class="noeff" src="pics/ex_quick/line_basic.png" alt="" /></td>
+      <td><img class="noeff" src="pics/ex_quick/line_ggplot.png" alt="" /></td>
     </tr>
   </table>
 </section>
 
-<!-- syntax for R code highlighting -->
+<!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
 <section>
-  <p>test code</p>
-  <pre><code class='language-r' data-trim contenteditable>
-library(ggplot2)
-r <- function(a){
-  cat('hello')
-}
-  </code></pre>
+  <h2 class="morespace">有一天走在路上</h2>
+  <p class='grey'>想不到要用什麼 dataset 當範例</p>
+</section>
+<section>
+  <p>突然看到這個</p>
+  <img class="small" src="pics/herjer2013.jpg"/>
+</section>
+<section>
+  <h2>......</h2>
+</section>
+<section>
+  <h3 class="morespace">不如就用<span class="red">教育</span>相關的統計數字當範例</h3>
+  <p><span class="blue">補習班</span>的目前還沒收集好，多是廣告文宣
+  <br /><small class='fragment grey'>可能需要影像辨識，不好爬資料</small></p>
+  <p class='fragment'>Open Data? 不如試試<span class="blue">教育部</span>的統計資料</p>
+</section>
+<section>
+  <p>教育部 → 重要教育統計資訊</p>
+  <a href="http://www.edu.tw/pages/detail.aspx?Node=3378&Page=14083&Index=5" target='_blank'>
+    <img class="fit" src="pics/TW_MinistryEdu.png" alt="" />
+  </a>
+</section>
+<section>
+  <h2 class="morespace">感覺都蠻好戰的 XD</h2>
+  <p>來個禮貌的起手式</p>
+</section>
+<section id="edu-dataset">
+  <h3>使用的資料表</h3>
+  <ul class="morespace">
+    <li>近年來大學學科能力測驗（學測）總級分人數分布 <a href="#/twpt">→</a></li>
+  </ul>
+</section>
+
+<!-- Edu: TWPT -->
+<section id="twpt">
+  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
+  <h3>大學學測總級分人數分布</h3>
+
+</section>
+<section>
+  
 </section>
 
 <!-- Combine multiple vectors into one vector and a factor -->
@@ -385,14 +422,14 @@ orig <- unstack(comb)
         </section>
         -->
 <!-- THE END -->
-        <section>
-					<h2>Q &amp; A</h2> 
-          <img class="noeff" src="pics/chibird_end.jpg"/>
-          <p><small>
-            The set of images are made by 
-            <a href="http://chibird.com" target='_blank'>chibird</a>.
-          </small></p>
-				</section>
+<section>
+  <h2>Q &amp; A</h2> 
+  <img class="noeff" src="pics/chibird_end.jpg"/>
+  <p><small>
+    The set of images are made by 
+    <a href="http://chibird.com" target='_blank'>chibird</a>.
+  </small></p>
+</section>
 
       </div><!-- slides -->
     </div><!-- reveal -->
