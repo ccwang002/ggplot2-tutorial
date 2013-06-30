@@ -23,5 +23,6 @@ g + geom_bar(stat='identity', position='identity') + guides(fill=FALSE)
 g + geom_bar(stat='identity', position='identity', width=0.6) + guides(fill=FALSE)
 
 # custom coloring
-g + geom_bar(stat='identity', position='identity', width=0.8, size=0.3, color='black') +
+g + geom_bar(stat='identity', position='identity', 
+             width=0.8, size=0.3, color='black') + 
   scale_fill_manual(values=c('#80BBFF', '#D86C82'), guide=FALSE)

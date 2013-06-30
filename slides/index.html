@@ -550,6 +550,7 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
     <a href="#/bar-fill-color">Fill, Color</a> |
     <a href="#/bar-group-dodge">Group (Dodge)</a> |
     <a href="#/bar-color-theme">Color Theme (Palette)</a> |
+    <a href="#/bar-stack">Stack</a> |
   </small></p>
 </section>
 
@@ -617,7 +618,7 @@ ggplot(cabbage_exp, aes(x=interaction(Cultivar, Date), y=Weight, fill=Cultivar))
 <section id="bar-color-theme">
   <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
     or back to <a href="#/bar">Bar</a></small></p>
-  <h3 class="morespace">First into <span class="red">Color Theme</span> using Bar Plot</h3>
+  <h3>First into <span class="red">Color Theme</span> using Bar Plot</h3>
   <pre><code class="language-r" data-trim contenteditable>
 library(gcookbook)
 g <- ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
@@ -645,7 +646,7 @@ ggplot(cabbage_exp, aes(x=Cultivar, y=Weight, fill=Date)) +
 <section id="bar-coloring">
   <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
     or back to <a href="#/bar">Bar</a></small></p>
-  <h3 class="morespace">More on Conditional <span class="red">Coloring</span></h3>
+  <h3>More on Conditional <span class="red">Coloring</span></h3>
   <pre><code class="language-r" data-trim contenteditable>
 library(gcookbook)
 csub <- subset(climate, Source=='Berkeley' & Year >= 1900)
@@ -655,12 +656,40 @@ csub$pos <- csub$Anomaly10y >= 0
 g + geom_bar(stat='identity', position='identity') + guides(fill=FALSE)
 
 # change the width of bars (var: width, default is 0.9) + custom coloring
-g + geom_bar(stat='identity', position='identity', width=0.8, size=0.3, color='black') +
+g + geom_bar(stat='identity', position='identity', 
+             width=0.8, size=0.3, color='black') +
   scale_fill_manual(values=c('#80BBFF', '#D86C82'), guide=FALSE)
   </code></pre>
   <p style='margin-bottom: 0px; line-height: 1em;'><small>
     More on colors, go to <a href="#/somewhere">somewhere else</a></small></p>
   <img class="noeff" src="pics/ex_bar/coloring_manual.png" alt="" />  
+</section>
+
+<!-- bar-stack -->
+<section id="bar-stack">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/bar">Bar</a></small></p>
+  <h3><span class="red">Stacked</span> Bar Plot</h3>
+  <pre><code class="language-r" data-trim data-noescape>
+library(gcookbook)
+# for stacked bar plots (compared with <a href="#/bar-group-dodge">Grouping by Dodging</a>)
+ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+  geom_bar(stat='identity')
+
+# make a proportional (or 100%) stacked bar graph
+library(plyr)
+ce <- ddply(cabbage_exp, 'Date', transform,
+            percent_weight = Weight / sum(Weight) * 100)
+ggplot(ce, aes(x=Date, y=percent_weight, fill=Cultivar)) +
+  geom_bar(stat="identity", color="black") +
+  scale_fill_brewer(palette='Pastel1')
+  </code></pre>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_bar/stack_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_bar/stack_percent.png"/></td>
+    </tr>
+  </table>
 </section>
 
 

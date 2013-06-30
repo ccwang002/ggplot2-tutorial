@@ -1,3 +1,4 @@
+library(ggplot2)
 library(gcookbook)   # import required data sets
 str(cabbage_exp)  # take a look at dataset cabbage_exp
 
