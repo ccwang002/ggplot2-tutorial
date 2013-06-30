@@ -72,6 +72,9 @@
       .reveal section img.fit {
         max-height: 90%;
       }
+      .reveal section img.small {
+        max-height: 80%;
+      }
       section img.space {
         margin: 10px !important;
       }
@@ -357,15 +360,15 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
   </table>
 </section>
 
-<!-- syntax for R code highlighting -->
+<!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
 <section>
-  <p>test code</p>
-  <pre><code class='language-r' data-trim contenteditable>
-library(ggplot2)
-r <- function(a){
-  cat('hello')
-}
-  </code></pre>
+  <h2 class="morespace">有一天走在路上</h2>
+  <p class='grey'>想不到要用什麼 dataset 當範例</p>
+</section>
+
+<section>
+  <p>突然看到這個</p>
+  <img class="small" src="pics/herjer2013.jpg"/>
 </section>
 
 <!-- Combine multiple vectors into one vector and a factor -->
@@ -385,14 +388,14 @@ orig <- unstack(comb)
         </section>
         -->
 <!-- THE END -->
-        <section>
-					<h2>Q &amp; A</h2> 
-          <img class="noeff" src="pics/chibird_end.jpg"/>
-          <p><small>
-            The set of images are made by 
-            <a href="http://chibird.com" target='_blank'>chibird</a>.
-          </small></p>
-				</section>
+<section>
+  <h2>Q &amp; A</h2> 
+  <img class="noeff" src="pics/chibird_end.jpg"/>
+  <p><small>
+    The set of images are made by 
+    <a href="http://chibird.com" target='_blank'>chibird</a>.
+  </small></p>
+</section>
 
       </div><!-- slides -->
     </div><!-- reveal -->
