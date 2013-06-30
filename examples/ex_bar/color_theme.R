@@ -1,3 +1,4 @@
+library(ggplot2)
 library(gcookbook)
 # continue from group_dodge.R
 

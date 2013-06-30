@@ -641,6 +641,28 @@ ggplot(cabbage_exp, aes(x=Cultivar, y=Weight, fill=Date)) +
   </table>
 </section>
 
+<!-- bar-coloring -->
+<section id="bar-coloring">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/bar">Bar</a></small></p>
+  <h3 class="morespace">More on Conditional <span class="red">Coloring</span></h3>
+  <pre><code class="language-r" data-trim contenteditable>
+library(gcookbook)
+csub <- subset(climate, Source=='Berkeley' & Year >= 1900)
+csub$pos <- csub$Anomaly10y >= 0
+
+# define the position explicitly by "poisition='identity'"
+g + geom_bar(stat='identity', position='identity') + guides(fill=FALSE)
+
+# change the width of bars (var: width, default is 0.9) + custom coloring
+g + geom_bar(stat='identity', position='identity', width=0.8, size=0.3, color='black') +
+  scale_fill_manual(values=c('#80BBFF', '#D86C82'), guide=FALSE)
+  </code></pre>
+  <p style='margin-bottom: 0px; line-height: 1em;'><small>
+    More on colors, go to <a href="#/somewhere">somewhere else</a></small></p>
+  <img class="noeff" src="pics/ex_bar/coloring_manual.png" alt="" />  
+</section>
+
 
 <!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
 <section>
