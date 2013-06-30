@@ -337,9 +337,11 @@ str(data)   # view data.frame structure
   <pre><code class="language-r" data-trim contenteditable>
 # basic
 plot(mtcars$wt, mtcars$mpg)
+
 # qplot()
 qplot(mtcars$wt, mtcars$mpg)
 qplot(wt, mpg, data=mtcars)  # if they are in same data.frame
+
 # ggplot()
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
   </code></pre>
@@ -361,8 +363,10 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
 # basic
 plot(pressure$temperature, pressure$pressure, type="l")
 points(pressure$temperature, pressure$pressure)
+
 # qplot()
 qplot(pressure$temperature, pressure$pressure, geom=c('line', 'point'))
+
 # ggplot()
 ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
   </code></pre>
@@ -384,8 +388,10 @@ ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
   <pre><code class="language-r" data-trim contenteditable>
 # basic
 barplot(BOD$demand, names.arg=BOD$Time)
+
 # qplot()
 qplot(factor(Time), demand, data=BOD, geom="bar", stat="identity")
+
 # ggplot()
 ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat='identity')
   </code></pre>
@@ -407,8 +413,10 @@ ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat='identity')
   <pre><code class="language-r" data-trim contenteditable>
 # basic
 barplot(table(mtcars$cyl))
+
 # qplot()
 qplot(factor(mtcars$cyl))
+
 # ggplot()
 ggplot(mtcars, aes(x=factor(cyl))) + geom_bar()
   </code></pre>
@@ -430,8 +438,10 @@ ggplot(mtcars, aes(x=factor(cyl))) + geom_bar()
   <pre><code class="language-r" data-trim contenteditable>
 # basic
 hist(mtcars$mpg, breaks=10)
+
 # qplot()
 qplot(mpg, data=mtcars, binwidth=5)
+
 # ggplot()
 ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=5)
   </code></pre>
@@ -449,23 +459,25 @@ ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=5)
 <!-- quick-box -->
 <section id="quick-box">
   <p class="top"><small>back to <a href='#/quick-view'>Quick</a></small></p>
-  <h3 class="morespace"><span class="red">Box</span> Plot</h3>
+  <h3 class=><span class="red">Box</span> Plot</h3>
   <pre><code class="language-r" data-trim contenteditable data-noescape>
 # basic <span class="pink">(NOTE: outliers are different from ggplot results!)</span>
 plot(ToothGrowth$supp, ToothGrowth$len, names=levels(ToothGrowth$supp))
 boxplot(len ~ supp, data=ToothGrowth)   # boxplot using formula syntax
 boxplot(len ~ supp + dose, data=ToothGrowth)  # interaction: supp, dose
+
 # qplot()
 qplot(supp, len, data=ToothGrowth, geom='boxplot')
 qplot(interaction(supp, dose), len, data=ToothGrowth, geom='boxplot')
+
 # ggplot()
 ggplot(ToothGrowth, aes(x=supp, y=len)) + geom_boxplot()
 ggplot(ToothGrowth, aes(x=interaction(supp, dose), y=len)) + geom_boxplot()
   </code></pre>
   <table style='width: 100%'>
-    <tr class="center small">
+    <!-- <tr class="center small">
       <td colspan='2'>basic</td><td colspan='2'><code>qplot()</code> or <code>ggplot()</code></td>
-    </tr>
+    </tr> -->
     <tr>
       <td><img class="noeff" width="150px" src="pics/ex_quick/box_basic.png"/></td>
       <td><img class="noeff" width="290px" src="pics/ex_quick/box_group_basic.png"/></td>
@@ -508,6 +520,7 @@ curve(1-cumfun(x), add=TRUE, col='green')   # append to same figure
   <pre><code class="language-r" data-trim contenteditable>
 # qplot()
 qplot(c(0, 10), fun=cumfun, stat='function', geom='line')
+
 # ggplot()
 g <- ggplot(data.frame(x=c(0, 10)), aes(x=x))   # store it first
 g + stat_function(fun=cumfun, geom='line')  # try geom='point'
@@ -541,8 +554,9 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
 </section>
 <section>
   <h3 class="morespace">不如就用<span class="red">教育</span>相關的統計數字當範例</h3>
-  <p><span class="blue">補習班</span>的目前還沒收集好，多是廣告文宣
-  <br /><small class='fragment grey'>可能需要影像辨識，不好爬資料</small></p>
+  <p><span class="blue">補習班</span>的還沒收集好，多是廣告文宣
+  <br /><small class='grey'>可能需要影像辨識，不好爬資料</small></p>
+  <img class="noeff fragment" src="pics/chibird_google.png" alt="" />
   <p class='fragment'>Open Data? 不如試試<span class="blue">教育部</span>的統計資料</p>
 </section>
 <section>
@@ -560,15 +574,24 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
 <section id="edu-dataset">
   <h3>使用的資料表</h3>
   <ul class="morespace">
-    <li>近年來大學學科能力測驗（學測）總級分人數分布 <a href="#/twpt">go →</a></li>
+    <li>大學生就讀類科之比率 <a href="#/twcd">go →</a></li>
+    <li>近年來大學學科能力測驗（學測）總級分人數分布 <a href="#/twpt">go →</a></li>    
   </ul>
 </section>
 
-<!-- Edu: TWPT -->
+<!-- Edu: twCD -->
+<section id="twcd">
+  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
+  <h3>大學生就讀類科之比率</h3>
+  <img src="pics/twCD_raw.png"/>
+  <p>如果我們想要看 92 - 101 學年度類科<span class="blue">變化的趨勢</span>…</p>
+</section>
+
+<!-- Edu: twPT -->
 <section id="twpt">
   <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
   <h3>大學學測總級分人數分布</h3>
-  <img src="pics/TWPT_raw.png"/>
+  <img src="pics/twPT_raw.png"/>
   <p class="fragment">ggplot2 馬上就可以派上用場</p>
   <div class="fragment">
     <p>但這筆資料很奇怪，分別存成 1, 2, 3 三檔</p>
@@ -577,6 +600,7 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
     </small></p>
   </div>
 </section>
+
 
 
 <!-- Combine multiple vectors into one vector and a factor -->
