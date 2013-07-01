@@ -25,8 +25,9 @@ library(ggplot2)
 g <- ggplot(twCD, aes(x=schoolyear, y=count, fill=category))
 
 # dodge
-g + geom_bar(stat='identity', width=0.8, 
-             position=position_dodge(0.7))
+g + scale_fill_brewer(palette='Set2') + 
+  geom_bar(stat='identity', width=0.8, alpha=.8, 
+           position=position_dodge(0.7))
 
 # stack
 gs <- g + geom_bar(stat='identity', color='black') + 
