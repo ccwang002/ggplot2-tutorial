@@ -33,7 +33,6 @@ Simply open the link http://ccwang002.github.io/ggplot2-tutorial/ will do.
 One can ``git clone`` this repository or download the `zip`__ file then extract it to get full source.
 
 Open the file ``slides/index.html`` in browser (javascript may be needed) then one can enjoy the slide locally.
-If viewed offline, some css(font) style may be lost.
 
 __ https://github.com/ccwang002/ggplot2-tutorial/archive/master.zip
 
