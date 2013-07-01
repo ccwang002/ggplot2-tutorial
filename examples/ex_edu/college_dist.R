@@ -1,5 +1,6 @@
 # Converting data from Wide to Long
 library(reshape2)
+load('twCollegeDist2013.RData')
 twCD <- melt(twCollegeDist2013, 
              id.vars=c('schoolyear', 'year'), 
              variable.name='category', 

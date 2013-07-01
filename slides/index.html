@@ -657,6 +657,7 @@ csub <- subset(climate, Source=='Berkeley' & Year >= 1900)
 csub$pos <- csub$Anomaly10y >= 0
 
 # define the position explicitly by "poisition='identity'"
+g <- ggplot(csub, aes(x=Year, y=Anomaly10y, fill=pos)) 
 g + geom_bar(stat='identity', position='identity') + guides(fill=FALSE)
 
 # change the width of bars (var: width, default is 0.9) + custom coloring
