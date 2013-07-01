@@ -282,7 +282,7 @@ qplot(wt, mpg, data=mtcars)
 <section id="toc">
   <h2>目錄</h2>
   <ul class="morespace">
-    <li>Quick Plot <a href="#/quick">→</a></li>
+    <li>Quick Plot <a href="#/quick-view">→</a></li>
     <li>Bar Plot <a href="#/bar">→</a></li>
     <li>Line Plot <a href="#/line">→</a></li>
     <li>Facet <a href="#/facet">→</a></li>
@@ -342,7 +342,7 @@ str(data)   # view data.frame structure
 plot(mtcars$wt, mtcars$mpg)
 
 # qplot()
-qplot(mtcars$wt, mtcars$mpg)
+qplot(mtcars$wt, mtcars$mpg, geom='point')
 qplot(wt, mpg, data=mtcars)  # if they are in same data.frame
 
 # ggplot()
@@ -371,7 +371,8 @@ points(pressure$temperature, pressure$pressure)
 qplot(pressure$temperature, pressure$pressure, geom=c('line', 'point'))
 
 # ggplot()
-ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() + geom_point()
+ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() +
+  geom_point()
   </code></pre>
   <table style='width: 100%'>
     <tr class="center small">
@@ -418,7 +419,8 @@ ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat='identity')
 barplot(table(mtcars$cyl))
 
 # qplot()
-qplot(factor(mtcars$cyl))
+qplot(factor(mtcars$cyl))   # no factor(), treat cyl as 
+                            # integer(continuous) not factors
 
 # ggplot()
 ggplot(mtcars, aes(x=factor(cyl))) + geom_bar()
@@ -567,7 +569,7 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
 weekabbrv <- c('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')
 BOD$week <- factor(BOD$Time, levels=1:7, labels=weekabbrv)
 
-# try denoting single fill/outline(colour) color
+# set uniform color of fill(param: fill) or outline(param: color) 
 g <- ggplot(BOD, aes(x=week, y=demand)) 
 g + geom_bar(stat='identity', fill='lightpink', color='black')
 
