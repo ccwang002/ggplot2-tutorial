@@ -718,6 +718,7 @@ ggplot(ce, aes(x=Date, y=percent_weight, fill=Cultivar)) +
     <a href="#/line-style">Style</a> |
     <a href="#/line-group">Group</a> |
     <a href="#/line-area">Area</a> |
+    <a href="#/line-stack-area">Stacked Area</a>
   </small></p>
 </section>
 
@@ -825,9 +826,55 @@ ggplot(sunspotyear, aes(x=Year, y=Sunspots)) +
   </table>
 </section>
 
+<!-- line-stack-area -->
+<section id="line-stack-area">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/line">Line</a></small></p>
+  <h3><span class="red">Stacked Area</span> Line Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+library(gcookbook)
+head(uspopage)  # requires long format (wide -> long)
+
+ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
+  geom_area(color='black', size=.2, alpha=.6) + 
+  scale_fill_brewer(palette='Blues')
+
+# use descending order: desc() to reorder stacking order
+library(plyr)
+ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup, order=desc(AgeGroup))) + 
+  geom_area(color=NA, alpha=.6) + scale_fill_brewer(palette='Blues') + 
+  geom_line(position='stack', color='black', size=.4)
+  </code></pre>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_line/stack_basic.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_line/stack_desc.png"/></td>      
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2 class="morespace">可能想要先小試身手</h2>
+  <p style='margin-bottom: 20px;'><small>
+    看太多 code 太累了嗎？ <span class="grey">不就畫個圖而已…</span>
+  </small></p>
+  <p>不如試試一個<a href="#/real-data">實例</a></p>
+</section>
+
+<!-- Facet ========== -->
+<section id="facet">
+    <h2 class="morespace"><span class="purple">Facets</span></h2>
+  <p>sample code: 
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_facet" target='_blank'>ex_facet</a>
+  </p>
+  <p style="margin-top: 50px;"><small>
+    <a href="#/line-basic">y limit, log scale</a> |
+  </small></p>
+
+</section>
 
 <!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
-<section>
+<section id="real-data">
   <h2 class="morespace">有一天走在路上</h2>
   <p class='grey'>想不到要用什麼 dataset 當範例</p>
 </section>
