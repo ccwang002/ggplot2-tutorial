@@ -277,14 +277,16 @@ qplot(wt, mpg, data=mtcars)
   </table>
   <p class='grey'>臺灣應該都買得到 Ex. 天壠書局</p>
 </section>
+
 <!-- TOC -->
-<section>
+<section id="toc">
   <h2>目錄</h2>
   <ul class="morespace">
-    <li class="grey">輸入資料</li>
-    <li class="grey">快速瀏覽資料</li>
-    <li class="grey">C</li>
-    <li class="grey">D</li>
+    <li>Quick Plot <a href="#/quick">→</a></li>
+    <li>Bar Plot <a href="#/bar">→</a></li>
+    <li>Line Plot <a href="#/line">→</a></li>
+    <li>Facet <a href="#/facet">→</a></li>
+    <li>Real Case using Edu data sets <a href="#/edu-dataset">→</a></li>
   </ul>
 </section>
 
@@ -863,14 +865,86 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup, order=desc(AgeGroup))) 
 
 <!-- Facet ========== -->
 <section id="facet">
-    <h2 class="morespace"><span class="purple">Facets</span></h2>
+  <h2 class="morespace"><span class="purple">Facets</span>: Split Data into Subplots</h2>
   <p>sample code: 
-    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_facet" target='_blank'>ex_facet</a>
+  <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_facet" target='_blank'>ex_facet</a>
   </p>
+  <ul>
+    <li><code>facet_grid()</code> 限垂直/水平的排列</li>
+    <li><code>facet_wrap()</code> 如同文字般繞排</li>
+  </ul>
   <p style="margin-top: 50px;"><small>
-    <a href="#/line-basic">y limit, log scale</a> |
+    <a href="#/facet-grid">Grid</a> |
+    <a href="#/facet-wrap">Wrap</a>
   </small></p>
+</section>
 
+<!-- facet-grid -->
+<section id="facet-grid">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/facet">Facet</a></small></p>
+  <h3 class="morespace">Facet <span class="red">Grid</span></h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# View(mpg)
+g <- ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()
+g   # the original scatter plot
+
+# what facet does here is that it treats the "original" data
+# with a category variable(discrete var: drv), and plot the figure
+# using same axis ranges but only "sub" data.
+
+# now the category var: drv
+g + facet_grid(drv ~ .)
+# now the category var: cyl
+g + facet_grid(. ~ cyl)
+
+# now verticl var: drv, horizontal var: cyl
+g + facet_grid(drv ~ cyl)
+  </code></pre>
+  <p class="pink"><small>例子在下一頁</small></p>
+</section>
+
+<section>
+  <table style='width: 100%'>
+    <tr>
+      <td width='200px'></td>
+      <td><img class="noeff" width="600px" src="pics/ex_facet/grid_x.png"/></td>      
+    </tr>
+    <tr>
+      <td><img class="noeff" width="200px" src="pics/ex_facet/grid_y.png"/></td>
+      <td><img class="noeff" width="600px" src="pics/ex_facet/grid_xy.png" alt="" /></td>
+    </tr>
+  </table>
+</section>
+
+<!-- facet-wrap -->
+<section id="facet-wrap">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/facet">Facet</a></small></p>
+  <h3 class="morespace">Facet <span class="red">Wrap</span></h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# continue from grid.R
+g <- ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()
+
+# they have same result
+g + facet_wrap(~ class, ncol=4)
+g + facet_wrap(~ class, nrow=2)
+  </code></pre>
+  <img class="noeff" width='850px' src="pics/ex_facet/wrap_42.png" alt="" />
+</section>
+
+<section>
+  <img src="pics/chibird_expection.jpg" alt="" />
+  <p>好像也沒很簡單……</p>
+  <div class="fragment">
+    <p>希望大家能掌握 ggplot2 設計的概念</p>
+    <p>用的時候能知道查哪些關鍵字</p>
+  </div>
+</section>
+
+<section>
+  <img src="pics/chibird_cram.jpg" alt="" />
+  <p>Deadline 前能查得到最重要！</p>
 </section>
 
 <!-- Tryout: Using Taiwan Proficiency Test Score Distribution -->
@@ -935,23 +1009,44 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup, order=desc(AgeGroup))) 
 </section>
 
 
+<section>
+  <h3>What's <span class="pink">Next?</span> 今天沒提到的部份</h3>
+  <ul class="morespace">
+    <li>Scatter (Bubble) plot</li>
+    <li>Annotations: text, line/arrow, shape(rectangle)</li>
+    <li>Labels</li>
+    <li>X, Y Axis, Legends</li>
+    <li>Error bar</li>
+    <li>Theme setting</li>
+    <li>Many other types of plot: pie chart, box plot, ...</li>
+  </ul>
+</section>
 
-<!-- Combine multiple vectors into one vector and a factor -->
-<!--        <section>
-          <h3 class="morespace">多個 Vectors <=> 1 Vector + 1 Factor</h3>
-<pre><code class="language-r" data-trim contenteditable>
-v1 <- 1:6
-v2 <- 7:12
-v3 <- 1:10
+<section>
+  <h3>What's <span class="pink">Next?</span> Want <span class="blue">More</span></h3>
+  <ul class="morespace">
+    <li>搜尋 "ggplot2 tutorial" </li>
+    <li>看 ggplot2 <a href="http://ggplot2.org/" target="_blank">官網</a></li>
+    <li>買本參考書 R Graphics Cookbook（本投影的 mindflow）</li>
+  </ul>
+</section>
 
-# stack
-comb <- stack(list(v1=v1, v2=v2, v3=v3))
+<section>
+  <h3>What's <span class="pink">Next?</span> Beyond <span class="blue">Static</span></h3>
+  <ul class="morespace">
+    <li class="morespace">想動態的，試試 
+    <ul>
+      <li><a href="http://ramnathv.github.io/rCharts/">rCharts</a></li>
+      <li><a href="http://ramnathv.github.io/rNVD3/">rNVD3</a></li>
+      <li><a href="https://code.google.com/p/google-motion-charts-with-r/">googleVis</a></li>
+    </ul>
+    </li>
+    <li>想能互動更新資料的，試試 <a href="http://www.rstudio.com/shiny/">Shiny</a></li>
+    <li class="fragment grey">想告訴老闆的……等等，你為什麼要這樣做 T_T</li>
+  </ul>
+</section>
 
-# unstack
-orig <- unstack(comb)
-</code></pre>
-        </section>
-        -->
+
 <!-- THE END -->
 <section>
   <h2>Q &amp; A</h2> 
