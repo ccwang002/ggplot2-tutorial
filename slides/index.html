@@ -715,7 +715,9 @@ ggplot(ce, aes(x=Date, y=percent_weight, fill=Cultivar)) +
   </p>
   <p style="margin-top: 50px;"><small>
     <a href="#/line-basic">y limit, log scale</a> |
-    <a href="#/style">style</a> |
+    <a href="#/line-style">Style</a> |
+    <a href="#/line-group">Group</a> |
+    <a href="#/line-area">Area</a> |
   </small></p>
 </section>
 
@@ -792,6 +794,33 @@ ggplot(tg, aes(x=dose, y=length, shape=supp, color=supp, linetype=supp)) +
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_line/group_dodge.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_line/group_manual.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- line-area -->
+<section id="line-area">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/line">Line</a></small></p>
+  <h3>Shaded <span class="red">Area</span> Line Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# convert sunspot.year into dataframe
+sunspotyear <- data.frame(Year = as.numeric(time(sunspot.year)), 
+                          Sunspots = as.numeric(sunspot.year))
+# using geom_area() for area plot
+ggplot(sunspotyear, aes(x=Year, y=Sunspots)) + 
+  geom_area(color='black', fill='blue', alpha=.3)
+
+# outline the area using geom_line()
+ggplot(sunspotyear, aes(x=Year, y=Sunspots)) + 
+  geom_area(fill='blue', alpha=.3) + geom_line(color='black')
+  </code></pre>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="900px" src="pics/ex_line/area_area.png"/></td>
+    </tr>
+    <tr>
+      <td><img class="noeff" width="900px" src="pics/ex_line/area_line.png"/></td>      
     </tr>
   </table>
 </section>
@@ -938,6 +967,7 @@ orig <- unstack(comb)
       var slideNumberDiv = document.createElement('div');
       slideNumberDiv.classList.add('slide-number');
       document.querySelector('.controls').appendChild(slideNumberDiv);
+    
     </script>
 
 	</body>
