@@ -550,7 +550,7 @@ g + stat_function(fun=cumfun, geom='line')  # try geom='point'
     <a href="#/bar-fill-color">Fill, Color</a> |
     <a href="#/bar-group-dodge">Group (Dodge)</a> |
     <a href="#/bar-color-theme">Color Theme (Palette)</a> |
-    <a href="#/bar-stack">Stack</a> |
+    <a href="#/bar-stack">Stack</a>
   </small></p>
 </section>
 
@@ -688,6 +688,110 @@ ggplot(ce, aes(x=Date, y=percent_weight, fill=Cultivar)) +
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_bar/stack_basic.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_bar/stack_percent.png"/></td>
+    </tr>
+  </table>
+</section>
+
+
+<!-- Summary -->
+<section>
+  <h2>小結 ggplot2 <span class="blue">設計觀點</span></h2>
+  <ul class="morespace">
+    <li><code>qplot()</code> 適合用在簡單的繪圖上</li>
+    <li><code>ggplot()</code> ggplot2 的起手式</li>
+    <li><code>aes(param=somevar, ...)</code> 使用離散變數（某一欄位）來改變繪圖的屬性（顏色、大小…）</li>
+    <li><code>geom_xxxx()</code> 決定每一層畫圖的類型</li>
+    <li>可以再額外疊加參數修改圖的設定</li>
+  </ul>
+</section>
+
+
+
+<!-- Line Graph ========== -->
+<section id="line">
+  <h2 class="morespace"><span class="purple">Line</span> Plots</h2>
+  <p>sample code: 
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/tree/master/examples/ex_line" target='_blank'>ex_line</a>
+  </p>
+  <p style="margin-top: 50px;"><small>
+    <a href="#/line-basic">y limit, log scale</a> |
+    <a href="#/style">style</a> |
+  </small></p>
+</section>
+
+<!-- line-basic -->
+<section id="line-basic">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/line">Line</a></small></p>
+  <h3 class="morespace">Control <span class="red">Y Axis</span> of Line Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+g <- ggplot(BOD, aes(x=Time, y=demand))
+# change y limit (they have same results)
+g + geom_line() + ylim(0, max(BOD$demand))
+g + geom_line() + expand_limits(y=0)
+
+library(gcookbook)
+# view y as log scale
+ggplot(worldpop, aes(x=Year, y=Population)) + 
+  geom_line() + geom_point() + scale_y_log10()
+  </code></pre>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_line/basic_ylim.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_line/basic_log.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- line-style -->
+<section id="line-style">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/line">Line</a></small></p>
+  <h3 class="morespace">Change Line Plot <span class="red">Style</span></h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# change line style
+ggplot(BOD, aes(x=Time, y=demand)) + 
+  geom_line(linetype='dashed', size=1, colour='red')
+
+# change point style
+ggplot(BOD, aes(x=Time, y=demand)) +
+  geom_point(size=5, shape=21, colour='darkred', fill='pink') +
+  geom_line()  
+  </code></pre>
+  <p style='margin-bottom: 0px; line-height: 1em;'><small>
+    Search <span class="red">"ggplot2" + "linetype" or "shape"</span> for more information
+  </small></p>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_line/style_line.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_line/style_point.png"/></td>
+    </tr>
+  </table>
+</section>
+
+<!-- line-group -->
+<section id="line-group">
+  <p class="top"><small>Not familiar? Start from <a href='#/quick-view'>Quick</a> 
+    or back to <a href="#/line">Line</a></small></p>
+  <h3><span class="red">Grouping</span> Line Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+library(plyr)
+tg <- ddply(ToothGrowth, c("supp", "dose"), summarize, length=mean(len))
+g <- ggplot(tg, aes(x=dose, y=length, shape=supp, color=supp))
+g + geom_line() + geom_point(size=4)  # supp determines both shape and color
+
+g + geom_line(position=position_dodge(0.2)) +   # dodge lines and point
+  geom_point(position=position_dodge(0.2), size=4)
+
+ggplot(tg, aes(x=dose, y=length, shape=supp, color=supp, linetype=supp)) + 
+  geom_line() + geom_point(size=4) +  # styling
+  scale_color_brewer(palette='Set1') + scale_shape_manual(values=c(20, 6)) + 
+  scale_linetype_manual(values=c('dotted', 'dashed'))
+  </code></pre>
+  <table style='width: 100%'>
+    <tr>
+      <td><img class="noeff" width="440px" src="pics/ex_line/group_dodge.png"/></td>
+      <td><img class="noeff" width="440px" src="pics/ex_line/group_manual.png"/></td>
     </tr>
   </table>
 </section>
