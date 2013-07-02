@@ -657,6 +657,7 @@ csub <- subset(climate, Source=='Berkeley' & Year >= 1900)
 csub$pos <- csub$Anomaly10y >= 0
 
 # define the position explicitly by "poisition='identity'"
+g <- ggplot(csub, aes(x=Year, y=Anomaly10y, fill=pos)) 
 g + geom_bar(stat='identity', position='identity') + guides(fill=FALSE)
 
 # change the width of bars (var: width, default is 0.9) + custom coloring
@@ -994,6 +995,49 @@ g + facet_wrap(~ class, nrow=2)
   <h3>大學生就讀類科之比率</h3>
   <img src="pics/twCD_raw.png"/>
   <p>如果我們想要看 92 - 101 學年度類科<span class="blue">變化的趨勢</span>…</p>
+</section>
+
+<section>
+  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
+  <h3 class="morespace">Demonstrating Using <span class="pink">Bar</span> Plots</h3>
+  <p>使用 <span class="blue">Dodged, Stacked, Percentage Stacked</span> 三種方式作圖</p>
+  <pre><code class="language-r" data-trim contenteditable>
+g <- ggplot(twCD, aes(x=schoolyear, y=count, fill=category))
+# dodge
+g + scale_fill_brewer(palette='Set2') + 
+  geom_bar(stat='identity', width=0.8, alpha=.8, 
+           position=position_dodge(0.7))
+# stack
+g + geom_bar(stat='identity', color='black') + 
+  scale_fill_brewer(palette='Pastel1')
+
+library(plyr)
+# === Proportional Stacked Plot ===
+twCD <- ddply(twCD, "schoolyear", transform,
+              percent_count = count / sum(count) * 100)
+ggplot(twCD, aes(x=schoolyear, y=percent_count, fill=category)) +
+  geom_bar(stat='identity', color='black') + 
+  scale_fill_brewer(palette='Set3')
+</code></pre>
+<p>完整的原始碼請看 
+  <a href="https://github.com/ccwang002/ggplot2-tutorial/blob/master/examples/ex_edu/college_dist.R" target='_blank'>source code</a>
+</p>
+</section>
+
+<section>
+  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
+  <p>Dodged</p>
+  <img class="noeff" src="pics/ex_edu/college_dist_dodge.png" alt="" />
+</section>
+<section>
+  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
+  <p>Stack</p>
+  <img class="noeff" src="pics/ex_edu/college_dist_stack.png" alt="" />
+</section>
+<section>
+  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
+  <p>Percentage Stack</p>
+  <img class="noeff" src="pics/ex_edu/college_dist_percent.png" alt="" />
 </section>
 
 <!-- Edu: twPT -->
