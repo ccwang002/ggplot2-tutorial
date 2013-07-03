@@ -76,6 +76,10 @@ ggplot(twPT, aes(x=score, y=percent_count, group=schoolyear,
   theme_bw()                                  # the default size scale is way too big
 
 # combined with area plot
+# If we use geom_line() + geom_area() it will be strange,
+# because the line and area of same data does not appear in same layer.
+# Instead we use geom_area(..., color='#RGBcolor') along with
+# scale_size_discrete() to change the line width (param: size)
 ggplot(twPT, aes(x=score, y=percent_count, group=schoolyear, 
                  size=schoolyear, fill=schoolyear)) +
   geom_area(position='identity', alpha = 0.8, color='#333333') +
@@ -102,4 +106,25 @@ ggplot(twPT, aes(x=schoolyear, y=percent_count, fill=scorecls)) +
   geom_bar(stat='identity') + 
   scale_fill_manual(values=bluegrad_inv_fnt(8), 
                     breaks=rev(levels(twPT$scorecls)))
-  
+
+# === Labeling ===
+# put labels on figure, but we need to summarize the data set
+# so that each region of scores has only one observation
+twptcls <- ddply(twPT, c("schoolyear", "scorecls"), summarise, 
+                 percent_count = sum(percent_count, na.rm=TRUE))
+# stacked, label should be put in right place
+twptcls <- ddply(twptcls, "schoolyear", transform, 
+                 label_y=cumsum(percent_count) - 0.5 * percent_count)
+
+# format the label, or all digits of percentage will be printed
+formatter <- function(x, ...) {
+  x[x < 1] <- 0   # we don't want to show numbers below 1
+  format(round(x, digits=1), zero.print = FALSE, ...)
+}
+ggplot(twptcls, aes(x=schoolyear, y=percent_count, fill=scorecls)) + 
+  geom_bar(stat='identity', color=NA) + 
+  scale_fill_manual(values=bluegrad_inv_fnt(8), 
+                    breaks=rev(levels(twPT$scorecls))) + 
+  geom_text(aes(y=label_y, label=formatter(percent_count), color=scorecls), size=5) +
+  scale_color_manual(values=c(rep('black', 3), rep('grey', 5))) +
+  guides(color=FALSE)
