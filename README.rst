@@ -17,13 +17,18 @@ This repo contains the slides for presentation given at `Taiwan R User Group`_  
 .. _R_Graphics_Cookbook: http://shop.oreilly.com/product/0636920023135.do
 .. |R_Graphics_Cookbook| replace:: *R Graphics Cookbook*
 
-It basically depends on the following packages: ggplot2, gcookbook and plyr. 
+It basically depends on the following packages: `ggplot2`_, `gcookbook`_ and `plyr`_. 
 
 All of these packages can be installed by
 
 .. code-block::
 
     install.packages(c('ggplot2', 'gcookbook', 'plyr'))
+
+.. _ggplot2: http://ggplot2.org 
+.. _plyr: http://plyr.had.co.nz/
+.. _gcookbook: https://github.com/wch/gcookbook
+
 
 View the Slides
 ===============
