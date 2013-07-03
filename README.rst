@@ -17,9 +17,11 @@ This repo contains the slides for presentation given at `Taiwan R User Group`_  
 .. _R_Graphics_Cookbook: http://shop.oreilly.com/product/0636920023135.do
 .. |R_Graphics_Cookbook| replace:: *R Graphics Cookbook*
 
-It basically depends on the following packages: ggplot2, gcookbook and plyr. All of them can be installed by
+It basically depends on the following packages: ggplot2, gcookbook and plyr. 
 
-.. code-block:: r
+All of these packages can be installed by
+
+.. code-block::
 
     install.packages(c('ggplot2', 'gcookbook', 'plyr'))
 
@@ -32,12 +34,12 @@ Online
 Simply open the link http://ccwang002.github.io/ggplot2-tutorial/ will do.
 
 
-@local
+Local
 ------
 
-One can ``git clone`` this repository or download the `zip`__ file then extract it to get full source.
+One can ``git clone`` this repository or download and extract the `zip`__ file to get full source.
 
-Open the file ``slides/index.html`` in browser (javascript may be needed) then one can enjoy the slide locally.
+Open ``slides/index.html`` in browser (**Javascript** may be needed) to view the slides.
 
 __ https://github.com/ccwang002/ggplot2-tutorial/archive/master.zip
 
