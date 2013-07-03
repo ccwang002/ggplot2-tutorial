@@ -85,6 +85,10 @@
         margin: 20px !important;
       }
 
+      .reveal table.center {
+        margin: 0 auto;
+      }
+
       .reveal thead td {
         padding-bottom: 20px;
       }        
@@ -155,14 +159,14 @@
             <li class="fragment blue">太弱所以要繼續唸第五年</li>
             <li>專題研究 @ NTU Center <br />
             of Genomics Medicine</li>
-            <li>Bioinformatics &amp; 
-            Biostatistics</li>
+            <li>Bioinformatics &amp; Biostatistics</li>
             <li>about.me/lbwang</li> 
         </ul></td>
         <td><img src="pics/head.jpg" alt="Head Photo" /></td>
       </tr>
   </table>
 </section>
+
 <!-- Today's Topic and Scenario -->
 <section>
   <h2 class="morespace">今天主題</h2> 
@@ -188,7 +192,7 @@
 </section>
 <section>
   <h2 class="morespace">很容易生出這種圖表</h2>
-  <table>
+  <table class="center">
     <thead><tr><td>excel</td> <td>matlab</td></tr></thead>
     <tbody><tr>
       <td><img class="noeff" src="pics/excel_default.png"/></td>
@@ -198,7 +202,7 @@
 </section>
 <section>
   <h2 class="morespace">其實還不少 …</h2>
-  <table>
+  <table class="center">
     <tr>
       <td><img class="noeff" src="pics/google_excel.png"/></td>
       <td><img class="noeff" src="pics/google_matlab.png"/></td>
@@ -234,6 +238,7 @@ qplot(wt, mpg, data=mtcars)
     <li><span class="blue">搭配 R</span> 統計分析，直接呈現資料樣貌</li>
   </ul>
 </section>
+
 <!-- GOAL -->
 <section>
   <h2>今天的目標</h2>
@@ -262,17 +267,17 @@ qplot(wt, mpg, data=mtcars)
 </section>
 <!-- Reference -->
 <section>
-  <h2>參考書</h2>
-  <table>
+  <h2 class="morespace">參考書</h2>
+  <table class="center">
     <tr class="center">
-      <td><img width="80%" src="pics/R_graphics_cookbook.jpg" /></td>
-      <td><img width="80%" src="pics/R_cookbook.jpg" /></td>
-      <td><img width="80%" src="pics/R_graphics.jpg"  /></td>
+      <td><img height="350px" src="pics/R_graphics_cookbook.jpg" /></td>
+      <td><img height="350px" src="pics/R_cookbook.jpg" /></td>
+      <td><img height="350px" src="pics/R_graphics.jpg"  /></td>
     </tr>
     <tr class="center">
       <td><span class="red">主要</span>參考這本</td>
       <td>R 基礎語法</td>
-      <td>包含 ggplot2 等<br /> R 圖形套件</td>
+      <td>詳細介紹 ggplot2 等 <br /> R 圖形套件</td>
     </tr>
   </table>
   <p class='grey'>臺灣應該都買得到 Ex. 天瓏書局</p>
@@ -294,7 +299,10 @@ qplot(wt, mpg, data=mtcars)
 <section>
   <h2 class="morespace">什麼樣的資料適合作圖？</h2>
   <ul class="morespace">
-    <li><span class="red">1 row = 1 observation</span> 的 <code>data.frame</code>, <code>csv</code>, ... 檔案</li>
+    <li><span class="red">
+      1 row = 1 observation</span> 的 <code>data.frame</code>, 
+      <code>csv</code>, ... 檔案
+    </li>
     <li>格式奇怪的資料，可以透過 Python, R, sed/awk/... 來整理</li>
     <li>找方法，不如直接問問 <a href="http://stackoverflow.com/">Stack Overflow</a> 大神</li>
   </ul>
@@ -348,7 +356,7 @@ qplot(wt, mpg, data=mtcars)  # if they are in same data.frame
 # ggplot()
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
@@ -374,7 +382,7 @@ qplot(pressure$temperature, pressure$pressure, geom=c('line', 'point'))
 ggplot(pressure, aes(x=temperature, y=pressure)) + geom_line() +
   geom_point()
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
@@ -399,7 +407,7 @@ qplot(factor(Time), demand, data=BOD, geom="bar", stat="identity")
 # ggplot()
 ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat='identity')
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
@@ -425,7 +433,7 @@ qplot(factor(mtcars$cyl))   # no factor(), treat cyl as
 # ggplot()
 ggplot(mtcars, aes(x=factor(cyl))) + geom_bar()
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
@@ -450,7 +458,7 @@ qplot(mpg, data=mtcars, binwidth=5)
 # ggplot()
 ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=5)
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>basic</td><td><code>qplot()</code> or <code>ggplot()</code></td>
     </tr>
@@ -479,7 +487,7 @@ qplot(interaction(supp, dose), len, data=ToothGrowth, geom='boxplot')
 ggplot(ToothGrowth, aes(x=supp, y=len)) + geom_boxplot()
 ggplot(ToothGrowth, aes(x=interaction(supp, dose), y=len)) + geom_boxplot()
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <!-- <tr class="center small">
       <td colspan='2'>basic</td><td colspan='2'><code>qplot()</code> or <code>ggplot()</code></td>
     </tr> -->
@@ -507,7 +515,7 @@ cumfun <- function(xvec) 1/(1 + exp(-xvec + 5))
 curve(cumfun(x), from=0, to=10)
 curve(1-cumfun(x), add=TRUE, col='green')   # append to same figure
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>basic</td><td>basic (self-defined function)</td>
     </tr>
@@ -530,7 +538,7 @@ qplot(c(0, 10), fun=cumfun, stat='function', geom='line')
 g <- ggplot(data.frame(x=c(0, 10)), aes(x=x))   # store it first
 g + stat_function(fun=cumfun, geom='line')  # try geom='point'
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td><code>ggplot()</code></td><td><code>ggplot()</code> (self-defined function)</td>
     </tr>
@@ -577,7 +585,7 @@ g + geom_bar(stat='identity', fill='lightpink', color='black')
 ggplot(BOD, aes(x=week, y=demand, fill=week)) + geom_bar(stat='identity')
 ggplot(BOD, aes(x=week, y=demand, color=week)) + geom_bar(stat='identity')
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td></td>
     </tr>
@@ -607,7 +615,7 @@ ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) +
 ggplot(cabbage_exp, aes(x=interaction(Cultivar, Date), y=Weight, fill=Cultivar)) + 
   geom_bar(stat='identity')
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr class="center small">
       <td>group</td><td>interaction</td>
     </tr>
@@ -637,7 +645,7 @@ ggplot(cabbage_exp, aes(x=Cultivar, y=Weight, fill=Date)) +
   </code></pre>
   <!--<p style='margin-bottom: 0px; line-height: 1em;'><small>
     More on colors, go to <a href="#/somewhere">somewhere else</a></small></p>-->
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="290px" src="pics/ex_bar/color_palette_1.png"/></td>
       <td><img class="noeff" width="290px" src="pics/ex_bar/color_palette_2.png"/></td>
@@ -689,7 +697,7 @@ ggplot(ce, aes(x=Date, y=percent_weight, fill=Cultivar)) +
   geom_bar(stat="identity", color="black") +
   scale_fill_brewer(palette='Pastel1')
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_bar/stack_basic.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_bar/stack_percent.png"/></td>
@@ -743,7 +751,7 @@ library(gcookbook)
 ggplot(worldpop, aes(x=Year, y=Population)) + 
   geom_line() + geom_point() + scale_y_log10()
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_line/basic_ylim.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_line/basic_log.png"/></td>
@@ -769,7 +777,7 @@ ggplot(BOD, aes(x=Time, y=demand)) +
   <p style='margin-bottom: 0px; line-height: 1em;'><small>
     Search <span class="red">"ggplot2" + "linetype" or "shape"</span> for more information
   </small></p>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_line/style_line.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_line/style_point.png"/></td>
@@ -796,7 +804,7 @@ ggplot(tg, aes(x=dose, y=length, shape=supp, color=supp, linetype=supp)) +
   scale_color_brewer(palette='Set1') + scale_shape_manual(values=c(20, 6)) + 
   scale_linetype_manual(values=c('dotted', 'dashed'))
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_line/group_dodge.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_line/group_manual.png"/></td>
@@ -821,7 +829,7 @@ ggplot(sunspotyear, aes(x=Year, y=Sunspots)) +
 ggplot(sunspotyear, aes(x=Year, y=Sunspots)) + 
   geom_area(fill='blue', alpha=.3) + geom_line(color='black')
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="900px" src="pics/ex_line/area_area.png"/></td>
     </tr>
@@ -850,7 +858,7 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup, order=desc(AgeGroup))) 
   geom_area(color=NA, alpha=.6) + scale_fill_brewer(palette='Blues') + 
   geom_line(position='stack', color='black', size=.4)
   </code></pre>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td><img class="noeff" width="440px" src="pics/ex_line/stack_basic.png"/></td>
       <td><img class="noeff" width="440px" src="pics/ex_line/stack_desc.png"/></td>      
@@ -908,7 +916,7 @@ g + facet_grid(drv ~ cyl)
 </section>
 
 <section>
-  <table style='width: 100%'>
+  <table class="center">
     <tr>
       <td width='200px'></td>
       <td><img class="noeff" width="600px" src="pics/ex_facet/grid_x.png"/></td>      
@@ -998,8 +1006,10 @@ g + facet_wrap(~ class, nrow=2)
 </section>
 
 <section>
-  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
-  <h3 class="morespace">Demonstrating Using <span class="pink">Bar</span> Plots</h3>
+  <p class="top"><small>
+    Start from <a href="#/twcd">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3 class="morespace">Demonstrating <span class="pink">Bar</span> Plots</h3>
   <p>使用 <span class="blue">Dodged, Stacked, Percentage Stacked</span> 三種方式作圖</p>
   <pre><code class="language-r" data-trim contenteditable>
 g <- ggplot(twCD, aes(x=schoolyear, y=count, fill=category))
@@ -1018,26 +1028,32 @@ twCD <- ddply(twCD, "schoolyear", transform,
 ggplot(twCD, aes(x=schoolyear, y=percent_count, fill=category)) +
   geom_bar(stat='identity', color='black') + 
   scale_fill_brewer(palette='Set3')
-</code></pre>
-<p>完整的原始碼請看 
-  <a href="https://github.com/ccwang002/ggplot2-tutorial/blob/master/examples/ex_edu/college_dist.R" target='_blank'>source code</a>
-</p>
+  </code></pre>
+  <p><small>完整的原始碼請參考 
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/blob/master/examples/ex_edu/twCD_dist.R" target='_blank'>source code</a>
+  </small></p>
 </section>
 
 <section>
-  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
-  <p>Dodged</p>
+  <p class="top"><small>
+    Start from <a href="#/twcd">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
   <img class="noeff" src="pics/ex_edu/college_dist_dodge.png" alt="" />
+  <p class="blue">Dodged</p>
 </section>
 <section>
-  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
-  <p>Stack</p>
+  <p class="top"><small>
+    Start from <a href="#/twcd">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
   <img class="noeff" src="pics/ex_edu/college_dist_stack.png" alt="" />
+  <p class="blue">Stack</p>
 </section>
 <section>
-  <p class="top"><small>back to <a href='#/edu-dataset'>Edu Dataset</a></small></p>
-  <p>Percentage Stack</p>
+  <p class="top"><small>
+    Start from <a href="#/twcd">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
   <img class="noeff" src="pics/ex_edu/college_dist_percent.png" alt="" />
+  <p class="blue">Percentage Stack</p>
 </section>
 
 <!-- Edu: twPT -->
@@ -1054,6 +1070,171 @@ ggplot(twCD, aes(x=schoolyear, y=percent_count, fill=category)) +
   </div>
 </section>
 
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3>Demonstrating <span class="pink">Line/Area</span> Plots</h3>
+  <p>Overlapped <span class="blue">Area</span> Plot</p>
+  <pre><code class="language-r" data-trim contenteditable>
+twPT$scorecls <- cut(twPT$score, breaks=c(seq(from=-1, to=70, by=10), 75),
+                     labels=c('<10', '10-19', '20-29', '30-39', '40-49', 
+                              '50-59','60-69', '> 69'))
+g <- ggplot(twPT, aes(x=score, y=count, group=schoolyear, fill=schoolyear))
+g + geom_area(alpha=.8, position='identity', color='black', size=0.2) 
+
+# Palette using 'Blues' (warning: no enough defined colors)
+g + geom_area(alpha=.8, position='identity', color='black', size=0.2) +
+  scale_fill_brewer(palette='Blues')
+
+# custom gradient function
+bluegrad_fnt <- colorRampPalette(c('#0C0C63', 'white'))
+g + geom_area(alpha=1, position='identity', color='black', size=0.2) +
+  scale_fill_manual(values=bluegrad_fnt(11))
+
+g + geom_area(alpha=1, position='identity', color='black', size=0.2) +
+  scale_fill_grey(start=0.05, end=0.9) + theme_bw() # grey
+  </code></pre>
+  <p><small>（結果在下一頁）</small></p>
+  <p><small>完整的原始碼請參考 
+    <a href="https://github.com/ccwang002/ggplot2-tutorial/blob/master/examples/ex_edu/twPT_dist.R" target='_blank'>source code</a>
+  </small></p>
+</section>
+
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3><span class="blue">Result</h3>  
+  <table class="center">
+    <tr class="center">
+      <td><img class="noeff" width="300px" src="pics/ex_edu/twPT_area_default.png"/></td>
+      <td><img class="noeff" width="300px" src="pics/ex_edu/twPT_area_blues.png"/></td>
+      <td><img class="noeff" width="300px" src="pics/ex_edu/twPT_area_grey.png"/></td>
+    </tr>
+    <tr class="center">
+      <td colspan="3"><img class="noeff" width='600px' src="pics/ex_edu/twPT_area_custom.png" alt="" /></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3><span class="pink">Normalized</span> Area Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+library(plyr)
+twPT <- ddply(twPT, "schoolyear", transform,
+              percent_count = count / sum(count) * 100)
+by(twPT$percent_count, twPT$schoolyear, sum)  # check the result
+
+ggplot(twPT, aes(x=score, y=percent_count, group=schoolyear, fill=schoolyear)) + 
+  geom_area(alpha=1, position='identity', color='black', size=0.2) +
+  scale_fill_manual(values=bluegrad_fnt(11))
+  </code></pre>
+  <img class="noeff" width="600px" src="pics/ex_edu/twPT_area_percent_custom.png" />
+</section>
+
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3><span class="pink">Line</span> Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+ggplot(twPT, aes(x=score, y=percent_count, group=schoolyear, 
+                 color=schoolyear, size=schoolyear)) + 
+  geom_line(position='identity') + theme_bw() 
+  scale_size_discrete(range = c(1.5, 0.2))
+
+# combined with area plot
+ggplot(twPT, aes(x=score, y=percent_count, group=schoolyear, 
+                 size=schoolyear, fill=schoolyear)) +
+  geom_area(position='identity', alpha = 0.8, color='#333333') +
+  scale_size_discrete(range = c(1.5, 0.2)) +
+  scale_fill_manual(values=bluegrad_fnt(11)) + theme_bw()
+  </code></pre>
+  <table class="center">
+    <tr class="center">
+      <td><img class="noeff" width="450px" src="pics/ex_edu/twPT_line_default.png" /></td>
+      <td><img class="noeff" width="450px" src="pics/ex_edu/twPT_line_customarea.png" /></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3>Stacked <span class="pink">Bar</span> Plot</h3>
+  <pre><code class="language-r" data-trim contenteditable>
+# Now we plot the stacked bar plot
+ggplot(twPT, aes(x=schoolyear, y=count, fill=scorecls)) + 
+  geom_bar(stat='identity') +
+  scale_fill_brewer(palette='Blues', breaks=rev(levels(twPT$scorecls)))
+
+# we define another set of colorPalette
+bluegrad_inv_fnt <- colorRampPalette(c('white', '#0C0C63'))
+ggplot(twPT, aes(x=schoolyear, y=count, fill=scorecls)) + 
+  geom_bar(stat='identity') + 
+  scale_fill_manual(values=bluegrad_inv_fnt(8), 
+                    breaks=rev(levels(twPT$scorecls)))
+</code></pre>
+  <table class="center">
+    <tr class="center">
+      <td><img class="noeff" width="450px" src="pics/ex_edu/twPT_bar_blues.png" /></td>
+      <td><img class="noeff" width="450px" src="pics/ex_edu/twPT_bar_custom.png" /></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3>
+    <span class="pink">Percentage</span> Bar Plot and <span class="pink">Labeling</span>
+  </h3>
+  <pre><code class="language-r" data-trim contenteditable>
+ggplot(twPT, aes(x=schoolyear, y=percent_count, fill=scorecls)) + 
+  geom_bar(stat='identity') + 
+  scale_fill_manual(values=bluegrad_inv_fnt(8), 
+                    breaks=rev(levels(twPT$scorecls)))
+  </code></pre>
+  <pre><code class="language-r" data-trim contenteditable>
+twptcls <- ddply(twPT, c("schoolyear", "scorecls"), summarise, 
+                 percent_count = sum(percent_count, na.rm=TRUE))
+twptcls <- ddply(twptcls, "schoolyear", transform, 
+                 label_y=cumsum(percent_count) - 0.5 * percent_count)
+
+formatter <- function(x, ...) {   # function to format label
+  x[x < 1] <- 0   # we don't want to show numbers below 1
+  format(round(x, digits=1), zero.print = FALSE, ...)
+}
+
+ggplot(twptcls, aes(x=schoolyear, y=percent_count, fill=scorecls)) + 
+  geom_bar(stat='identity', color=NA) + 
+  scale_fill_manual(values=bluegrad_inv_fnt(8), 
+                    breaks=rev(levels(twPT$scorecls))) + 
+  geom_text(aes(y=label_y, label=formatter(percent_count), 
+            color=scorecls), size=5) + guides(color=FALSE) +
+  scale_color_manual(values=c(rep('black', 3), rep('grey', 5)))
+</code></pre>
+  <p><small>結果在下一頁</small></p>
+</section>
+
+<section>
+  <p class="top"><small>
+    Start from <a href="#/twpt">begin</a>, or back to <a href='#/edu-dataset'>Edu Dataset</a>
+  </small></p>
+  <h3><span class="blue">Result</span></h3>  
+  <table class="center">
+    <tr class="center">
+      <td><img class="noeff" width='200px' src="pics/ex_edu/twPT_stack_percent.png"/></td>
+      <td><img class="noeff" width='600px' src="pics/ex_edu/twPT_stack_label.png"/></td>
+    </tr>
+  </table>
+</section>
 
 <section>
   <h3>What's <span class="pink">Next?</span> 今天沒提到的部份</h3>
@@ -1101,7 +1282,7 @@ ggplot(twCD, aes(x=schoolyear, y=percent_count, fill=category)) +
     The set of images are made by 
     <a href="http://chibird.com" target='_blank'>chibird</a>.
   </small></p>
-  <p>Take this slide home from <br /> <a href="http://ccwang002.github.io/ggplot2-tutorial">http://ccwang002.github.io/ggplot2-tutorial</a></p>
+  <p>Thank you for listening &gt; &lt;</p>
 </section>
 
       </div><!-- slides -->
