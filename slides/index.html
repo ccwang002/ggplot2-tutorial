@@ -24,6 +24,9 @@
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
     <style type="text/css">
+       /* The following code enhances reveal.js by adding a page number, fired at slide change.
+        * The code is contributed by bitarch
+        * URL: https://github.com/hakimel/reveal.js/pull/56#issuecomment-16185578 */
       .reveal .controls div.slide-number {
         width: 25px;
         left: 27px;
@@ -36,6 +39,7 @@
         color: #111;
       }
 
+      /* custom defined styles */
       ul.morespace {
         padding-top: 30px;
       }
@@ -141,11 +145,11 @@
   </p>
   <p><small>
     Slide and sources code are on
-    <a href="http://github.com/ccwang002/ggplot2-tutorial" target="_blank">GitHub</a>. <br />
+    <a href="http://github.com/ccwang002/ggplot2-tutorial" target="_blank">GitHub</a>. A screencast is on <a href="http://youtu.be/de3GlQR-6YM">Youtube</a>. <br />
     Made by <a href="http://about.me/lbwang" target='_blank'>Liang Bo Wang</a> under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC 3.0 BY-SA</a> license.
   </small></p>
 
-  <p><small><kbd>←</kbd> <kbd>→</kbd> <kbd>PgUp</kbd> <kbd>PgDn</kbd> to navigate, <kbd>f</kbd> for fullscreen and <kbd>Esc</kbd> for an overview.</small></p>
+  <p><small><kbd>←</kbd> <kbd>→</kbd> <kbd>PgUp</kbd> <kbd>PgDn</kbd> <kbd>Space</kbd> to navigate, <kbd>f</kbd> for fullscreen and <kbd>Esc</kbd> for an overview.</small></p>
 </section>
 <!-- About me -->
 <section>
@@ -1316,6 +1320,9 @@ ggplot(twptcls, aes(x=schoolyear, y=percent_count, fill=scorecls)) +
 				]
 			});
 
+      /* The following code enhances reveal.js by adding a page number, fired at slide change.
+       * The code is contributed by bitarch
+       * URL: https://github.com/hakimel/reveal.js/pull/56#issuecomment-16185578 */
       // for pagenumber
       function currentSlideNumber(event) {
         var formattedStr;
@@ -1332,7 +1339,6 @@ ggplot(twptcls, aes(x=schoolyear, y=percent_count, fill=scorecls)) +
       Reveal.addEventListener('slidechanged', function(event) {
         document.querySelector('.slide-number').innerText = currentSlideNumber(event);
       });
-      //
       var slideNumberDiv = document.createElement('div');
       slideNumberDiv.classList.add('slide-number');
       document.querySelector('.controls').appendChild(slideNumberDiv);
