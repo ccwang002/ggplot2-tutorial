@@ -2,10 +2,10 @@
 ggplot2 Tutorial
 ################
 
-The slide is powered by the framework `reveal.js`_ (Hakim El Hattab) under MIT license. Unless otherwise mentioned, the content itself is licensed under a `Creative Commons Attribution-ShareAlike 3.0 Unported License`__.
+The slide is powered by the framework `reveal.js`_ (Hakim El Hattab) under MIT license. Unless otherwise mentioned, the content itself is licensed under a `Creative Commons Attribution 3.0 Unported License`__.
 
 .. _reveal.js:  https://github.com/hakimel/reveal.js/
-__ http://creativecommons.org/licenses/by-sa/3.0/
+__ http://creativecommons.org/licenses/by/3.0/
 
 
 Introduction
