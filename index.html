@@ -44,6 +44,15 @@
             line-height: 2em;
         }
 
+        /* source link */
+        div.ref-img p.src-link {
+            position: relative;
+            font-size: 14px;
+            text-align: right;
+            bottom: 10px;
+            right: 10px;
+        }
+
         /* two column slides */
         section.slide.twocol div.left {
             width: 50%;
@@ -125,7 +134,7 @@
         #cover p a {
             color: #DDD;
         }
-        #cover .src-link {
+        <D-r>#cover .src-link {
             position: absolute;
             font-size: 14px;
             text-align: right;
@@ -138,15 +147,196 @@
     </style>
     </section>
 
+
+    <section id="theme" class="slide"><div>
+        <h2>今天的主題</h2>
+        <ul>
+            <li class="next">畫圖</li>
+            <li class="next">…還是畫圖</li>
+            <li class="next">早上來上課會蠻想睡的……</li>
+            <li class="next">不知道大家常不常做圖表？</li>
+        </ul>
+    </div></section>
+
+
+    <section id="imagine" class="slide shout"><div>
+        <h2>想像一個情境</h2>
+    </div></section>
+
+
+    <section id="before-deadline" class="slide"><div>
+        <h2>報告/專題/咪挺前夕…</h2>
+        <center><div class="ref-img">
+            <img src="pics/deadline.jpg" alt="">
+            <p class="src-link">
+                pic src:
+                <a target="_blank"
+                   href="http://doingsomethingmoreforgod.blogspot.tw/2010/11/deadline-for-applications-fast_20.html">
+                    doingsomethingmoreforgod.blogspot.tw
+                </a>
+            </p>
+        </div></center>
+    </div></section>
+
+
+    <section id="deadline-eff" class="slide"><div>
+        <center><div class="ref-img">
+            <img src="pics/deadline_eff.jpg" alt="">
+            <p class="src-link">
+                pic src:
+                <a target="_blank"
+                    href="http://www.hksilicon.com/kb/articles/112626/deadlineFinish">
+                    hksilicon.com
+                </a>
+            </p>
+        </div></center>
+    </div></section>
+
+
+    <section id="bad-plot" class="slide twocol"><div>
+        <h2>很容易生出這樣的圖表…</h2>
+        <div class="left">
+            <p class="inline">excel</p>
+            <img src="pics/excel_default.png" width="100%" alt="">
+        </div><div class="right">
+            <p class="inline">matlab</p>
+            <img src="pics/matlab_default.gif" width="100%" alt="">
+        </div>
+    </div><style>
+        p.inline {
+            text-align: center;
+        }
+    </style></section>
+
+
+    <section id="more-google-ex" class="slide twocol"><div>
+        <h2>預設的風格……<span class="next">很醜</span></h2>
+        <div class="left">
+            <img src="pics/google_excel.png" width="100%" alt="">
+        </div><div class="right">
+            <img src="pics/google_matlab.png" width="100%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="google-ggplot2" class="slide"><div>
+            <center><img width="90%" src="pics/google_ggplot2.png" alt=""></center>
+    </div></section>
+
+    <section id="common-problems" class="slide"><div>
+        <h2>自己的經驗，常碰到的問題</h2>
+        <ul>
+            <li class="next">預設風格不好看</li>
+            <li class="next">但很多東西很難調整</li>
+            <li class="next">不知道該怎麼畫</li>
+            <li class="next">最麻煩的是根本不能畫</li>
+        </ul>
+        <h2 class="next">這些問題，大多在 R 裡能解決</h2>
+    </div></section>
+
+
+    <section id="solutions" class="slide"><div>
+        <h2>在選擇什麼工具作圖前，先想清楚</h2>
+        <ul>
+            <li class="next">這張圖多重要？</li>
+            <li class="next">可以花多少時間？值得花這麼多時間嗎？</li>
+            <li class="next">有必要這要畫嗎？</li>
+            <li class="next">這樣畫想要呈現什麼？</li>
+        </ul>
+        <p class="next">在 R 裡面，大概有 <br />
+            1. 內建指令 2. 底層的畫圖指令 3. ggplot2 類比較抽象的函式 <br />
+            幾種方式來畫圖。
+        </p>
+    </div></section>
+
+
+    <section id="sol-basic-plot" class="slide twocol"><div>
+        <h2>使用內建指令</h2>
+        <div class="left">
+            <p class="inline">優點</p>
+            <ul>
+                <li>很簡單又快</li>
+                <li>適合看 data 長什麼樣</li>
+                <li>指令齊全，2D 圖都做得到</li>
+                <li>要調一些版面也不難 <br />
+                    axis ticks, legend, margin <br />
+                    都可以改
+                </li>
+            </ul>
+        </div>
+        <div class="right next">
+            <p class="inline">缺點</p>
+            <ul>
+                <li><code>par(%$#!...)</code></li>
+                <li>會查到一堆神祕的參數名稱</li>
+                <li>預設風格簡單，想改得比較美觀要花很多力氣</li>
+            </ul>
+        </div>
+    </div></section>
+
+
+    <section id="sol-lowapi-plot" class="slide twocol"><div>
+        <h2>使用底層的套件</h2>
+        <div class="left">
+            <p class="inline">優點</p>
+            <ul>
+                <li>lattice, grid, ... 等套件</li>
+                <li>所有圖表都畫得出來</li>
+                <li>可以仔細設計呈現的方式</li>
+                <li>很適合用來做 Infographics</li>
+                <li>很多期刊上圖（尤其是多圖併列）都可以用這個畫</li>
+            </ul>
+        </div>
+        <div class="right next">
+            <p class="inline">缺點</p>
+            <ul>
+                <li>一張圖畫兩、三天都不嫌長</li>
+                <li>對 R、R 繪圖的概念要很清楚</li>
+                <li>「魔鬼都藏在細節裡」</li>
+                <li>非常不適合趕死線</li>
+                <li>非常不適合趕死線</li>
+                <li>非常不適合趕死線</li>
+            </ul>
+        </div>
+    </div></section>
+
+
+    <section id="sol-ggplot2" class="slide twocol"><div>
+        <h2>使用 <code>ggplot2</code></h2>
+        <div class="left">
+            <p class="inline">優點</p>
+            <ul>
+                <li>大多數的圖表都畫得出來</li>
+                <li>在使用上遵照一定邏輯<br />
+                    例如畫圖都從 <code>geom_xxx(...)</code> 開始</li>
+                <li>短時間內能產出品質更高的圖表</li>
+                <li>常用的設定存起來，會越用越順</li>
+            </ul>
+        </div>
+        <div class="right next">
+            <p class="inline">缺點</p>
+            <ul>
+                <li>一開始還是要學怎麼用</li>
+                <li>調參數還是要查，但比較好懂</li>
+                <li>當你要開始脫離它設計的框架，例：把幾張圖排一起共用座標</li>
+                <li>會慢慢越來越底層</li>
+                <li>剛開始一定很卡</li>
+            </ul>
+        </div>
+    </div></section>
+
+
     <section id="outline" class="slide"><div>
         <h2>本日大綱</h2>
         <ul>
             <li>資料前處理</li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>基本畫圖指令</li>
+            <li>ggplot2 原則</li>
+            <li>練習</li>
         </ul>
     </div></section>
+
+
 
     <!-- End Slide -->
     <section id='end' class='slide shout cover w'><div>
