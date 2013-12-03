@@ -409,11 +409,19 @@ df2 = pd.read_csv(CSV_PATH)  # 測試，再讀回來
 
         <section id="play-data-process-csv" class="slide twocol-ll"><div>
         <div class="left">
-        <p>在 R 內讀 CSV 非常方便。<br />
-        也試一下由 excel 另存 CSV 吧。</p>
-        <pre class="language-r small">
+        <p class="tighter">在 R 內讀 CSV 非常方便。<br />
+        也試一下由 excel 另存 CSV 吧。 <br />
+        data.frame 操作詳見 <a href="http://adv-r.had.co.nz/Subsetting.html" target="_blank">
+                Subsetting, Advanced R programming by Hadley Wickham
+        </a></p>
+        <pre class="language-r small tighter">
 <code>df <- read.csv('NTU_B02new_sexratio.csv')
-</code></pre>
+df.ntu_sexratio[, c("女", "男")]
+df.ntu_sexratio[df.ntu_sexratio$女 > 30, ]
+df.ntu_sexratio[
+  df.ntu_sexratio$女 > 30 &amp; 
+  df.ntu_sexratio$男 < 20, 
+]</code></pre>
         </div><div class="right">
         <img src="r-fig/data_process_csv.png" width="100%" alt="">
         </div>

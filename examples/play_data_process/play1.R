@@ -1,4 +1,12 @@
-source('read_raw.R')
+# source('read_raw.R')
+
+df <- read.csv('NTU_B02new_sexratio.csv')
+df.ntu_sexratio[, c("女", "男")]
+df.ntu_sexratio[df.ntu_sexratio$女 > 30, ]
+df.ntu_sexratio[
+  df.ntu_sexratio$女 > 30 & 
+  df.ntu_sexratio$男 < 20, 
+]
 
 # get a quick summary of the data
 summary(df.ntu_sexratio)
