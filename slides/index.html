@@ -326,16 +326,98 @@
     </div></section>
 
 
-    <section id="outline" class="slide"><div>
+    <section id="outline" class="slide twocol-ll"><div>
         <h2>本日大綱</h2>
+        <div class="left">
         <ul>
             <li>資料前處理</li>
             <li>基本畫圖指令</li>
             <li>ggplot2 原則</li>
             <li>練習</li>
         </ul>
+        </div><div class="right">
+            <img src="pics/chibird/happy.png" alt="">
+        </div>
     </div></section>
 
+
+    <section id="data-prepocess" class="slide"><div>
+        <h2>資料前處理</h2>
+        <ul>
+            <li>實務上花最多時間的 (80/20)</li>
+            <li>讀入前儘量轉換成「純文字」、「CSV」檔</li>
+            <li>太複雜的處理可以改用自己熟悉的工具 <ul>
+                <li>推薦用 Python</li>
+                <li>原生是 Excel 的話可以先用 Excel 把表格排整齊</li>
+            </ul></li>
+            <li>使用 <code>data.frame</code> 儲存資料</li>
+            <li>轉換成 <b>1 row = 1 observation</b></li>
+            <li>填補、去除 <code>NA</code></li>
+        </ul>
+    </div></section>
+
+
+    <section id="play-data-process" class="slide twocol"><div>
+        <div class="left">
+        <pre class="language-r small">
+<code># 放在 examples/play_data_process
+# 純文字，用 R 未必好操作
+# 記得使用 UTF-8 不要 big5/cp950
+df.ntu_sexratio <- read.table(
+  'NTU_B02new_sexratio.raw.txt',
+  comment.char="#",
+  header=TRUE,
+  strip.white=TRUE,
+  stringsAsFactors=FALSE
+)
+# 把總人數中的 "人" 去掉
+# 並且由字串轉成數字處理
+df.ntu_sexratio[[2]] <- as.integer(
+  strsplit(df.ntu_sexratio[[2]], "人")
+)
+</code></pre>
+        </div><div class="right">
+            <img src="r-fig/data_process_raw.png" width="100%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="play-data-process-py" class="slide twocol-ll"><div>
+        <div class="left">
+        <pre class="language-python small">
+<code># 使用 Python3 處理
+import pandas as pd
+RAW_PATH = 'NTU_B02new_sexratio.raw.txt'
+CSV_PATH = 'NTU_B02new_sexratio.csv'
+df = pd.read_table(
+    RAW_PATH,    # 檔案路徑
+    sep='[ ]*',  # 分隔符號
+    skiprows=11  # 忽略前 11 行不讀
+)
+df = df.dropna() # df.head() 可以看到第 0 列是 NaN (NA)
+# 去「人」
+df.ix[:, 1] = df.icol(1).apply(lambda x: x[:-1])
+df.to_csv(CSV_PATH, index=False)  # 存檔
+df2 = pd.read_csv(CSV_PATH)  # 測試，再讀回來
+</code></pre>
+        </div><div class="right">
+        <img src="r-fig/data_process_raw.png" width="100%" alt="">
+        <p class="inline next">光這檔案就夠麻煩了 <br /> 以轉成 CSV 為目標</p>
+        </div>
+    </div></section>
+
+
+        <section id="play-data-process-csv" class="slide twocol-ll"><div>
+        <div class="left">
+        <p>在 R 內讀 CSV 非常方便。<br />
+        也試一下由 excel 另存 CSV 吧。</p>
+        <pre class="language-r small">
+<code>df <- read.csv('NTU_B02new_sexratio.csv')
+</code></pre>
+        </div><div class="right">
+        <img src="r-fig/data_process_csv.png" width="100%" alt="">
+        </div>
+    </div></section>
 
 
     <!-- End Slide -->
