@@ -23,6 +23,10 @@
             background: none;
         }
 
+        h2.tighter {
+            margin: -40px 0 20px;
+        }
+
         /* tighter paragraph */
         p.tighter {
             margin: 0 0 25px;
@@ -415,15 +419,121 @@ df2 = pd.read_csv(CSV_PATH)  # 測試，再讀回來
                 Subsetting, Advanced R programming by Hadley Wickham
         </a></p>
         <pre class="language-r small tighter">
-<code>df <- read.csv('NTU_B02new_sexratio.csv')
-df.ntu_sexratio[, c("女", "男")]
-df.ntu_sexratio[df.ntu_sexratio$女 > 30, ]
-df.ntu_sexratio[
-  df.ntu_sexratio$女 > 30 &amp; 
-  df.ntu_sexratio$男 < 20, 
-]</code></pre>
+<code>df.ntu <- read.csv('NTU_B02new_sexratio.csv')
+df.ntu[, c("女", "男")]
+df.ntu[df.ntu$女 > 30, ]
+df.ntu[df.ntu$女 > 30 &amp; df.ntu$男 < 20, ]
+summary(df.ntu)
+ncol(df.ntu)
+nrow(df.ntu)</code></pre>
         </div><div class="right">
         <img src="r-fig/data_process_csv.png" width="100%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="basic-plot-head" class="slide"><div>
+        <h2>使用 ggplot2 基本畫圖指令</h2>
+        <ul>
+            <li>比較完整的介紹，見舊的投影片。</li>
+            <li>今天會挑部份來介紹 <br/>
+                <code>ggplot(data=..., aes(x=..., y=...)) + geom_xxx(...)</code> <br/>
+                這樣的形式為主。擴充度高，最常用。<ul>
+                <li><code>ggplot</code> 描述 data 從哪來</li>
+                <li><code>aes</code> 描述圖上的元素跟 data 之類的對應關係</li>
+                <li><code>geom_xxx</code> 描述要畫圖的類型及相關調整的參數</li>
+            </ul></li>
+        </ul>
+    </div></section>
+
+
+    <section id="basic-scatter" class="slide twocol"><div>
+        <h2 class="tighter">Scatter Plot</h2>
+        <pre class="language-r tighter">
+<code>plot(mtcars$wt, mtcars$mpg)
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()</code>
+        </pre>
+        <div class="left">
+            <img src="r-fig/basic_scatter_bt.png" width="90%" alt="">
+        </div><div class="right">
+            <img src="r-fig/basic_scatter_gg.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="basic-line" class="slide twocol"><div>
+        <h2 class="tighter">Line Plot</h2>
+        <pre class="language-r tighter">
+<code>ggplot(pressure, aes(x=temperature, y=pressure)) +
+  geom_line() + geom_point()</code>
+        </pre>
+        <div class="left">
+            <img src="r-fig/basic_line_point.png" width="90%" alt="">
+        </div><div class="right">
+            <img src="r-fig/basic_line_line.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="basic-bar" class="slide twocol"><div>
+        <h2 class="tighter">Bar Plot</h2>
+        <pre class="language-r tighter">
+<code>ggplot(BOD, aes(x=factor(Time), y=demand)) +
+  geom_bar(stat="identity")</code>
+        </pre>
+        <div class="left">
+            <img src="r-fig/basic_bar_orig.png" width="90%" alt="">
+        </div><div class="right">
+            <img src="r-fig/basic_bar_factor.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="basic-bar-count" class="slide twocol"><div>
+        <h2 class="tighter">Bar Plot by Counting</h2>
+        <pre class="language-r tighter small">
+<code>g <- ggplot(mtcars, aes(x=factor(cyl)))  # 先存起來
+g + geom_bar(stat="bin")  # 可以一步一步接
+g + geom_bar(stat="bin") + theme_bw(16)  # 改主題</code>
+        </pre>
+        <div class="left">
+            <img src="r-fig/basic_bar_count.png" width="90%" alt="">
+        </div><div class="right">
+            <img src="r-fig/basic_bar_count_theme.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="aes-scatter" class="slide twocol"><div>
+        <h2 class="tighter">Scatter Plot</h2>
+        <pre class="language-r tighter small">
+<code>ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point(color="blue", size=5, alpha=0.5)
+ggplot(mtcars, aes(x=wt, y=mpg, color=gear)) + geom_point()</code>
+        </pre>
+        <div class="left">
+            <img src="r-fig/aes_scatter_param.png" width="90%" alt="">
+        </div><div class="right">
+            <img src="r-fig/aes_scatter_color.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+    <section id="aes-scatter-scale" class="slide twocol"><div>
+        <div class="left">
+            <p class="tighter">如果要更改一系列設的值，用 <code>scale_xxx(...)</code></p>
+             <pre class="language-r tighter small">
+<code>g <- ggplot(
+  mtcars, 
+  aes(x=wt, y=mpg, color=gear)
+)
+# 更改指定的顏色，目前是連續的
+g + geom_point(size=5) +
+  scale_color_continuous(
+    low="yellow", high="red"
+  ) + theme_bw(16) +
+  theme(legend.position="top")</code>
+            </pre>
+        </div><div class="right">
+            <img src="r-fig/aes_scatter_scale.png" width="90%" alt="">
         </div>
     </div></section>
 
