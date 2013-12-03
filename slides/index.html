@@ -219,6 +219,10 @@
     </div></section>
 
 
+    <section id="google-ggplot2" class="slide"><div>
+            <center><img width="90%" src="pics/google_ggplot2.png" alt=""></center>
+    </div></section>
+
     <section id="common-problems" class="slide"><div>
         <h2>自己的經驗，常碰到的問題</h2>
         <ul>
@@ -266,6 +270,57 @@
                 <li><code>par(%$#!...)</code></li>
                 <li>會查到一堆神祕的參數名稱</li>
                 <li>預設風格簡單，想改得比較美觀要花很多力氣</li>
+            </ul>
+        </div>
+    </div></section>
+
+
+    <section id="sol-lowapi-plot" class="slide twocol"><div>
+        <h2>使用底層的套件</h2>
+        <div class="left">
+            <p class="inline">優點</p>
+            <ul>
+                <li>lattice, grid, ... 等套件</li>
+                <li>所有圖表都畫得出來</li>
+                <li>可以仔細設計呈現的方式</li>
+                <li>很適合用來做 Infographics</li>
+                <li>很多期刊上圖（尤其是多圖併列）都可以用這個畫</li>
+            </ul>
+        </div>
+        <div class="right next">
+            <p class="inline">缺點</p>
+            <ul>
+                <li>一張圖畫兩、三天都不嫌長</li>
+                <li>對 R、R 繪圖的概念要很清楚</li>
+                <li>「魔鬼都藏在細節裡」</li>
+                <li>非常不適合趕死線</li>
+                <li>非常不適合趕死線</li>
+                <li>非常不適合趕死線</li>
+            </ul>
+        </div>
+    </div></section>
+
+
+    <section id="sol-ggplot2" class="slide twocol"><div>
+        <h2>使用 <code>ggplot2</code></h2>
+        <div class="left">
+            <p class="inline">優點</p>
+            <ul>
+                <li>大多數的圖表都畫得出來</li>
+                <li>在使用上遵照一定邏輯<br />
+                    例如畫圖都從 <code>geom_xxx(...)</code> 開始</li>
+                <li>短時間內能產出品質更高的圖表</li>
+                <li>常用的設定存起來，會越用越順</li>
+            </ul>
+        </div>
+        <div class="right next">
+            <p class="inline">缺點</p>
+            <ul>
+                <li>一開始還是要學怎麼用</li>
+                <li>調參數還是要查，但比較好懂</li>
+                <li>當你要開始脫離它設計的框架，例：把幾張圖排一起共用座標</li>
+                <li>會慢慢越來越底層</li>
+                <li>剛開始一定很卡</li>
             </ul>
         </div>
     </div></section>
