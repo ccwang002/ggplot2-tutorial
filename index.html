@@ -538,6 +538,74 @@ g + geom_point(size=5) +
     </div></section>
 
 
+    <section id="aes-scatter-factor" class="slide twocol"><div>
+        <div class="left">
+            <p class="tighter">今天 <code>gear</code> 其實只有幾個值</p>
+             <pre class="language-r tighter small">
+<code>g <- ggplot(
+  mtcars, 
+  aes(x=wt, y=mpg, color=factor(gear))
+) + geom_point(size=5) + theme_bw(16) + 
+  theme(legend.position="top")
+g  # 印預設結果
+# 手動改顏色
+g + scale_color_manual(
+  values=c("red", "yellow", "purple")
+)
+# 系統內建色組
+g + scale_color_brewer(palette="Set3")
+</code>
+            </pre>
+        </div><div class="right">
+            <img src="r-fig/ase_scatter_factor.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+    
+    <section id="aes-scatter-combined" class="slide twocol"><div>
+        <div class="left">
+            <p class="tighter">可以一次更改很多東西</p>
+             <pre class="language-r tighter small">
+<code>g <- ggplot(
+  mtcars, 
+  aes(x=wt, y=mpg,
+      color=factor(gear), 
+      size=factor(gear)
+)) + theme_bw(16) + 
+  theme(legend.position="top")
+
+g + geom_point(alpha=0.7) + 
+  scale_size_discrete(range=c(4, 10))
+</code>
+            </pre>
+        </div><div class="right">
+            <img src="r-fig/aes_scatter_combined.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="aes-bar-combined" class="slide twocol"><div>
+        <div class="left">
+            <p class="tighter">其他類型的圖都是同樣規則</p>
+            <pre class="language-r tighter small">
+<code>g <- ggplot(mtcars, aes(
+  x=factor(cyl), 
+  fill=factor(cyl)
+))
+
+g + geom_bar(stat="bin") + 
+  scale_fill_brewer(palette="Set2") + 
+  theme_classic()
+
+# 試著把 fill 改成 color
+</code>
+            </pre>
+        </div><div class="right">
+            <img src="r-fig/aes_bar_combined.png" width="90%" alt="">
+        </div>
+    </div></section>
+
+    
     <!-- End Slide -->
     <section id='end' class='slide shout cover w'><div>
         <h2>Thank You!</h2>
