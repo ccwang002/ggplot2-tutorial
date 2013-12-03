@@ -11,13 +11,13 @@ __ http://creativecommons.org/licenses/by/3.0/
 Introduction
 ============
 
-This repo contains the slides for presentation given at `Taiwan R User Group`_  meet up and the corresponding R example code. It mainly follows the mindflow of the book: Winston C. (2012) |R_Graphics_Cookbook|_. Sebastopol, CA: O'Reilly Media, Inc. 
+This repo contains the slides for presentation given at `Taiwan R User Group`_  meet up and the corresponding R example code. It mainly follows the mindflow of the book: Winston C. (2012) |R_Graphics_Cookbook|_. Sebastopol, CA: O'Reilly Media, Inc.
 
 .. _Taiwan R User Group: http://www.meetup.com/Taiwan-R/events/125697962/
 .. _R_Graphics_Cookbook: http://shop.oreilly.com/product/0636920023135.do
 .. |R_Graphics_Cookbook| replace:: *R Graphics Cookbook*
 
-It basically depends on the following packages: `ggplot2`_, `gcookbook`_ and `plyr`_. 
+It basically depends on the following packages: `ggplot2`_, `gcookbook`_ and `plyr`_.
 
 All of these packages can be installed by
 
@@ -25,7 +25,7 @@ All of these packages can be installed by
 
     install.packages(c('ggplot2', 'gcookbook', 'plyr'))
 
-.. _ggplot2: http://ggplot2.org 
+.. _ggplot2: http://ggplot2.org
 .. _plyr: http://plyr.had.co.nz/
 .. _gcookbook: https://github.com/wch/gcookbook
 

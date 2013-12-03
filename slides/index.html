@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2013 OSSF R&amp;Statistics, Liang Bo Wang</title>
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Icon -->
+    <link href="pics/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- MathJax -->
+    <!-- CSS Stle -->
+    <link rel="stylesheet" href="lib/shower/themes/ribbon/styles/screen.css">
+    <link rel="stylesheet" href="lib/highlight/styles/tomorrow.css" type="text/css"/>
+    <style type="text/css" media="all">
+
+        /* clean table */
+        table.clean td img {
+            vertical-align: top;
+        }
+        table.clean td {
+            background: none;
+        }
+
+        /* tighter paragraph */
+        p.tighter {
+            margin: 0 0 25px;
+        }
+
+        /* tighter code */
+        pre.tighter {
+            margin: 0 0 20px;
+        }
+
+        /* inline */
+        p.inline {
+            margin-bottom: 0px;
+        }
+
+        /* smaller code */
+        pre.small code {
+            font-size: 16px;
+            line-height: 2em;
+        }
+
+        /* two column slides */
+        section.slide.twocol div.left {
+            width: 50%;
+            float: left;
+        }
+        section.slide.twocol div.right {
+            width: 50%;
+            float: right;
+        }
+
+        section.slide.twocol-ll div.left {
+            width: 65%;
+            float: left;
+        }
+        section.slide.twocol-ll div.right {
+            width: 35%;
+            float: right;
+        }
+
+        section.slide.twocol-lr div.left {
+            width: 35%;
+            float: left;
+        }
+        section.slide.twocol-lr div.right {
+            width: 65%;
+            float: right;
+        }
+    </style>
+
+</head>
+<body class="list">
+    <!-- Header in overview -->
+    <header class="caption">
+        <h1 style="padding-right: 50px">
+            Statistics and R
+        </h1>
+        <p>Liang Bo Wang, 2013-11-16</p>
+    </header>
+
+    <!-- START OF SLIDE CONTENT -->
+
+    <!-- Cover slide -->
+    <section id="cover" class="slide cover"><div>
+        <h3>
+            台大計量經濟 TA 課<br />
+            2013-xx-xx R 語言應用講座
+        </h3>
+        <h2>Statistics and R</h2>
+        <p><a href="http://about.me/lbwang" target="_blank">Liang Bo Wang</a> (亮亮)</br>
+        Under CC 3.0 BY TW License</p>
+        <img src="pics/cover.jpg" alt="">
+        <p class='src-link'>
+            pic source:
+            <a href="http://seuconteudonaweb.wordpress.com/2013/08/06/a-big-analise-de-dados/"
+               target="_blank">
+                http://seuconteudonaweb.wordpress.com/2013/08/06/a-big-analise-de-dados/
+            </a>
+        </p>
+    </div>
+    <style>
+        #cover h2 {
+            margin: 65px 0 65px;
+            color: #FFF;
+            text-align: center;
+            font-size: 130px;
+        }
+        #cover h3 {
+            margin: -30px 0 0 0;
+            color: #FFF;
+            text-align: center;
+            font-size: 32px;
+        }
+        #cover p {
+            margin: 30px 0 0;
+            text-align: center;
+            color: #DDD;
+            font-size: 32px;
+        }
+        #cover p a {
+            color: #DDD;
+        }
+        #cover .src-link {
+            position: absolute;
+            font-size: 14px;
+            text-align: right;
+            bottom: 10px;
+            right: 10px;
+        }
+        #cover img {
+            opacity: 0.7;
+        }
+    </style>
+    </section>
+
+
+    <section id="about-me" class="slide twocol"><div>
+        <div class="left">
+        <h2>About Me</h2>
+        <ul>
+            <li>王亮博（亮亮）</li>
+            <li>台大生醫電資所</li>
+            <li>Bioinfo. &amp; Biostat. Core Lab, <br />台大基因體中心</li>
+            <li>歡迎 Bioinfo 會後討論</li>
+        </ul>
+        </div><div class="right">
+            <p style="text-align: right;">
+            <img src="pics/me.jpg" alt="" style="width: 320px; margin-right: 50px;">
+            </p>
+        </div>
+    </div></section>
+
+
+    <section id="stat-rumor" class="slide"><div>
+        <h2>說到統計，很多人這麼說…</h2>
+        <figure>
+            <blockquote>
+                <p>根據統計的資料顯示，床是全世界最危險的地方，因為大多數的人都是死在床上，所以如果你想活久一點，千萬別上床。</p>
+            </blockquote>
+        </figure>
+        <figure class="next">
+            <blockquote>
+                <p>慶祝生日有利於延長壽命，因為統計表明，<br />那些活得越長的人，過的生日也越多。</p>
+            </blockquote>
+        </figure>
+        <figure class="next">
+            <blockquote>
+                <p>統計是門<b>不精確的科學</b>。</p>
+            </blockquote>
+        </figure>
+    </div></section>
+
+
+    <section id="why-learn-stat" class="slide"><div>
+        <h2>為什麼要學統計？</h2>
+        <ul>
+            <li>在不精準的情況下（不確定性），一個有系統的衡量方式。</li>
+            <li class="next">統計的評估的確帶有主觀的成份
+                <ul class="next">
+                    <li>透過系統化分析</li>
+                    <li>推估主觀的成份如何影響評估的結果</li>
+                </ul>
+            </li>
+            <li class="next">一般情況，無法普查、窮舉（例：馬總統的滿意度）
+                <ul class="next">
+                    <li>仰賴一小部份觀察到的結果（樣本）</li>
+                    <li>依據樣本做出推論（統計推論）</li>
+                    <li>跟樣本抽選的過程（抽樣）</li>
+                </ul>
+            </li>
+        </ul>
+    </div></section>
+
+
+    <section id="stat-contain" class="slide"><div>
+        <h2>統計的兩大部份</h2>
+        <ul>
+            <li>機率模型</li>
+            <li>統計推論</li>
+        </ul>
+        <h2 class="next">統計推論包含</h2>
+        <ul>
+            <li class="next">決定母體模型（有母數的話）</li>
+            <li class="next">決定檢定方式與虛無假設</li>
+            <li class="next">執行檢定，決策</li>
+        </ul>
+    </div><style>
+        #stat-contain h2 {
+            margin: -10px 0 30px;
+        }
+    </style></section>
+
+
+    <section id="but-r" class="slide shout"><div>
+        <h2>今天講 <code>R</code> 滴！</h2>
+        <p>有統計背景會更懂，但今天不刻意提理論，歡迎結束後來討論。</p>
+        <footer>
+            反正老師都這麼說，OK 的！ <br />
+            「大家高中就會了嘛 XD」 By 統計學教授 <br />
+            「大家上大學就會了喔 &gt;.^」 By 高中數學老師
+        </footer>
+    </div></section>
+
+
+    <section id="stat-use-r" class="slide"><div>
+        <h2>統計 Using R 心得</h2>
+        <p class="tighter">善用 <code>data.frame</code> 相關的 filtering。<br />
+        詳見 <a href="http://adv-r.had.co.nz/Subsetting.html" target="_blank">
+                Subsetting, Advanced R programming by Hadley Wickham
+        </a></p>
+        <pre class="language-r">
+<code>iris  # a built-in data.frame
+iris[, c('Sepal.Length', 'Petal.Width')]
+iris[iris$Species == 'setosa', ]
+# 以下兩行結果相同
+iris[iris$Sepal.Length > 7.5 &amp; iris$Petal.Width < 2.2, ]
+subset(iris, Sepal.Length > 7.5 &amp; Petal.Width < 2.2)</code>
+        </pre>
+    </div><style>
+        #stat-use-r h2 {
+            margin: -10px 0 25px;
+        }
+    </style></section>
+
+
+    <section id="r-vector" class="slide"><div>
+        <h2>R Basic Functions Are <em>Vectorized</em></h2>
+        <p class="tighter">大部份內建的函數可以處理 vector，不用自己寫迴圈，也較快。</p>
+        <pre class="language-r">
+<code>> exp(1)
+[1] 2.718282
+> exp(c(1, 2, 4, 6))
+[1]   2.718282   7.389056  54.598150 403.428793
+> cos(c(0, pi))
+[1]  1 -1</code>
+        </pre>
+    </div></section>
+
+
+    <section id="basic-r-stat" class="slide twocol"><div>
+        <h2>R Basic (Statistic) Functions</h2>
+        <div class="left">
+            <pre class="language-r">
+<code>mean, var, sd, cor
+min, max, median
+abs, round
+range  # 回傳 c(min, max)
+choose  # C(n, x)
+factorial  # n!
+# log 版
+lchoose, lfactorial</code>
+            </pre>
+        </div><div class="right next">
+            <pre class="language-r">
+<code>quantile # Ex. 基測 PR 值
+# 懶人包，針對物件多型結果不同
+summary(1:10)
+summary(factor(
+  c('a', rep('b', 3))
+))
+# 對 data.frame 也行
+summary(iris)</code>
+            </pre>
+        </div>
+        <footer>一句話，高中教過的敘述統計都有對應的內建函數。</footer>
+    </div>
+    </section>
+
+
+    <section id="basic-r-stat-contd" class="slide twocol"><div>
+    <div class="left">
+        <pre class="language-r">
+<code># 連加、連除
+> prod(1:4)
+[1] 24
+> sum(1:10)
+[1] 55
+> cumprod(1:4)
+[1]  1  2  6 24
+> cumsum(1:5)
+[1]  1  3  6 10 15</code>
+        </pre>
+    </div><div class="right">
+        <pre class="language-r">
+<code>> table(c(1:5, 1, 1, 3))
+1 2 3 4 5
+3 1 2 1 1
+
+# misc.
+is.na  #判斷是否有 NA
+seq    #建一個數列
+rep    #重覆一段數列
+diff   #數列項目間的差</code>
+        </pre>
+    </div>
+    </div></section>
+
+
+    <section id="intro-prob-fun" class="slide"><div>
+        <h2>Probability Function in R</h2>
+        <!-- 使用 Norm 舉例 -->
+        <p class="tighter">R 內建了許多分配函數。一般而言，一個分配會有以下 4 種 function，以常態分配 \(X \sim Norm(0, 1)\) 為例。</p>
+        <table><thead>
+            <tr>
+                <td>Function</td>
+                <td>Description</td>
+                <td>Math Form</td>
+            </tr>
+        </thead><tbody>
+            <tr>
+                <td><code>d...</code></td>
+                <td>Probability Density Fun. (PDF)</td>
+                <td>\(P(X \leq x) = \int_{-\infty}^x f_X(x) dx\)</td>
+            </tr>
+            <tr>
+                <td><code>p...</code></td>
+                <td>Cumulative Density Fun. (CDF)</td>
+                <td>\(P(X \leq x)= F_X(x)\)</td>
+            </tr>
+            <tr>
+                <td><code>q...</code></td>
+                <td>Quantile Fun. (inverse CDF)</td>
+                <td>\(q \to x\) s.t. \(F_X(x) = q\)</td>
+            </tr>
+            <tr>
+                <td><code>r...</code></td>
+                <td>Random Number Generator</td>
+                <td>generate \(\{X_i\}\)</td>
+            </tr>
+        </tbody></table>
+    </div></section>
+
+
+    <section id="intro-prob-fun-contd" class="slide"><div>
+        <table><tr>
+            <td><code>dnorm</code></td>
+            <td>$$f_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$$</td>
+            <td><pre class="language-r small tighter">
+<code>dnorm(-Inf) # 0
+dnorm(0) # 1/sqrt(2*pi)=0.4
+dnorm(Inf) # 0</code>
+            </pre></td>
+        </tr>
+        <tr>
+            <td><code>pnorm</code></td>
+            <td>$$F_X(x) = \int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} dx$$</td>
+            <td><pre class="language-r small tighter">
+<code>pnorm(-Inf) # 0
+pnorm(0) # 0.5
+pnorm(Inf) # 1</code>
+            </pre></td>
+        </tr>
+        <tr>
+            <td><code>qnorm</code></td>
+            <td>$$F^{-1}_X(q) = x \\ q\in(0, 1)$$</td>
+            <td><pre class="language-r small tighter">
+<code>qnorm(0) # -Inf
+qnorm(0.5) # 0
+qnorm(1) # Inf</code>
+            </pre></td>
+        </tr>
+        <tr>
+            <td><code>rnorm</code></td>
+            <td>$$X_1, \ldots, X_n \overset{iid}{\sim} Norm(0, 1)$$</td>
+            <td><pre class="language-r small tighter">
+<code>> rnorm(4)  # result differs
+[1]  0.87301675  1.78227369
+[3]  0.05253579 -0.41865347</code>
+            </pre></td>
+        </tr></table>
+    </div><style>
+        #intro-prob-fun-contd table td {
+            vertical-align: middle;
+        }
+    </style></section>
+
+
+    <section id="story" class="slide"><div>
+        <h2>範例要從一個浪漫的故事說起……</h2>
+        <figure><blockquote>
+            <p class='tighter'>一個男生開著車，在一個暴風雨的晚上。<br />
+            經過一個車站，三人正焦急的等公車。</p>
+            <p class='tighter'>
+            一位是需要急救的老人；另外一位是醫生，他正在照顧那位老人；<br />
+            最後一位則是他的夢中情人。</p>
+            <p class='tighter'>但男生的車只能再坐一個人。</p>
+        </blockquote></figure>
+        <center class="next"><h2>請問，他應該怎麼做？</h2></center>
+    </div></section>
+
+
+    <section id="story-sol" class="slide"><div>
+        <h2>解</h2>
+        <figure><blockquote>
+        <p>輕輕地交出手中的車鑰匙，交給醫生載老人去醫院。<br />
+        陪自己的夢中情人等公車，浪漫就此開展……</p>
+        </blockquote></figure>
+        <h2 class="next">故事的後續</h2>
+        <p class="next tighter">我們知道公車來的時間是不固定的……<b class="next">一個隨機事件</b></p>
+    </div></section>
+
+
+    <section id="bus-arrival-model" class="slide twocol"><div>
+        <h2>公車來的時間滿足以下分配</h2>
+        <div class="left">
+            <p class="tighter">$$T \sim Gamma(a, b)$$</p>
+            <p class="tighter">Gamma 分配有以下特性：
+                $$ E[T] = \frac{a}{b}, ~ Var[T] = \frac{E[T]}{b}$$
+            </p>
+            <p class="tighter">假設公車 15 分鐘來一班，則
+                $$a=15, b=1$$
+            </p>
+        </div>
+        <div class="right next">
+            <pre class="language-r small tighter">
+            <code>bus.gamma <- function(t) dgamma(t, 15, 1)
+curve(bus.gamma, from=0, to=50)</code>
+            </pre>
+            <img src="r-fig/story_model1/gamma_1.png" width="100%" alt="">
+            <center class="next"><p class="tighter">為何不用 \(a = 7.5, b = 0.5\) ?</p></center>
+        </div>
+    </div></section>
+
+
+    <section id="bus-arrival-model-contd" class="slide twocol-lr"><div>
+        <div class="left">
+            <ul>
+                <li>控制 \(\frac{a}{b}\) 固定平均值</li>
+                <li>用 \(b\) 大小調整時間的<br />分散程度</li>
+                <li>感覺還可以接受，暫用 $$
+                    T \sim Gamma(15, 1)
+                $$</li>
+                <li>Gamma 分配到底是什麼函數可以見
+                    <a href="http://en.wikipedia.org/wiki/Gamma_distribution"
+                        target="_blank">wiki
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <img src="r-fig/story_model1/gamma_multi.png" width="100%" alt="">
+            <center>
+                <a href="https://github.com/ccwang002/2013-OSSF-R-Statistics/blob/master/Rcode/story/model_1.R"
+                   target="_blank">程式碼見此</a>
+            </center>
+        </div>
+    </div></section>
+
+
+    <section id="story-model1-est" class="slide twocol"><div>
+        <div class="left">
+            <p class="tighter">公車超過 18 分鐘才來的機率？
+                $$ P(T > 18) = 1 - P(T \leq 18) $$
+            </p>
+            <pre class="language-r tighter">
+<code>1 - pgamma(18, 15, 1)
+# 0.208 橘色區域</code>
+            </pre>
+            <img class="next" src="r-fig/story_model1/cdf_area.png" width="90%" alt="">
+        </div><div class="right next">
+            <p class="tighter">公車 10 - 15 分鐘來的機率？
+                $$\begin{align}
+                    &P(10 < T \leq 15) \\
+                = &P(T \leq 15) - P(T \leq 10)
+                \end{align}$$
+            </p>
+            <pre class="language-r">
+<code>pgamma(15, 15, 1) -
+  pgamma(10, 15, 1)
+# 可以更簡潔寫成
+diff(pgamma(c(10, 15), 15, 1))
+# 0.451 藍色區域</code>
+            </pre>
+        </div>
+    </div></section>
+
+
+    <section id="prob-fun-list" class="slide"><div>
+        <h2>Built-in Distributions (Part)</h2>
+        <table><thead>
+            <tr>
+                <td>Dist. Name</td>
+                <td>PDF or PMF</td>
+                <td>參數、說明</td>
+            </tr>
+        </thead><tbody>
+            <tr>
+                <td>Uniform <code>unif</code><br />
+                \(Unif(a, b)\)</td>
+                <td>$$
+                    f(x) = \frac{1}{b-a}
+                $$</td>
+                <td><p class="inline">
+                    \(a\): <code>min=0</code><br />
+                    \(b\): <code>max=1</code>
+                </p></td>
+            </tr>
+            <tr>
+                <td>Binomial <code>binom</code><br />
+                \(Binomial(n, p)\)</td>
+                <td>$$
+                    P(x) = {n \choose x}\,p^x\,(1-p)^{n-x}
+                $$</td>
+                <td><p class="inline">
+                    \(n\): <code>size=NA</code><br />
+                    \(p\): <code>prob=NA</code>
+                </p></td>
+            </tr>
+            <tr>
+                <td>Beta <code>beta</code><br />
+                \(Beta(a, b)\)</td>
+                <td>$$
+                    f(x) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} x^{a-1} (1-x)^{b-1}
+                $$</td>
+                <td><p class="inline">
+                    \(a\): <code>shape1=NA</code><br />
+                    \(b\): <code>shape2=NA</code>
+                </p></td>
+            </tr>
+        </tbody></table>
+    </div><style>
+        #prob-fun-list table td {
+            vertical-align: middle;
+        }
+        #prob-fun-list table td:nth-child(1) {
+            width: 200px;
+        }
+        #prob-fun-list table td:nth-child(2) {
+            text-align: center;
+        }
+    </style></section>
+
+
+    <section id="prob-fun-list-contd" class="slide"><div>
+        <table><tbody>
+            <tr>
+                <td>Gamma <code>gamma</code><br />
+                \(Gamma(\alpha, \beta)\)</td>
+                <td>$$
+                    f(x) = \frac{\beta^\alpha}{\Gamma(\alpha)}
+                        x^{\alpha-1}e^{-\beta x}
+                $$</td>
+                <td><p class="inline">
+                \(\alpha\): <code>shape=NA</code><br />
+                \(\beta\): <code>rate=1</code>
+                </p></td>
+            </tr>
+            <tr>
+                <td>Poisson <code>pois</code><br />
+                \(Poisson(\lambda)\)</td>
+                <td>$$
+                    P(x) = \frac{\lambda^x}{x!}e^{-\lambda}
+                $$</td>
+                <td><p class="inline">
+                \(\lambda\): <code>lambda=NA</code></p></td>
+            </tr>
+            <tr>
+                <td>Exponential <code>exp</code><br />
+                \(Exp(\lambda)\)</td>
+                <td>$$
+                    f(x) = \lambda e^{-\lambda x}
+                $$</td>
+                <td><p class="inline">
+                \(\lambda\): <code>rate=NA</code>
+                </p></td>
+            </tr>
+            <tr>
+                <td>Normal <code>norm</code><br />
+                \(Norm(\mu, \sigma^2)\)</td>
+                <td>$$
+                    f(x) = \frac{1}{\sqrt{2\pi}\sigma}
+                        e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+                $$</td>
+                <td><p class="inline">
+                \(\mu\): <code>mean=0</code><br />
+                \(\sigma\): <code>sd=1</code>
+                </p></td>
+            </tr>
+        </tbody></table>
+    </div><style>
+        #prob-fun-list-contd table td {
+            vertical-align: middle;
+        }
+        #prob-fun-list-contd table td:nth-child(1) {
+            width: 200px;
+        }
+        #prob-fun-list-contd table td:nth-child(2) {
+            text-align: center;
+        }
+    </style></section>
+
+
+    <section id="rand-gen" class="slide"><div>
+        <h2>Random Number Generator</h2>
+        <ul>
+            <li><code>r...</code> 都是。</li>
+            <li class="next">如何重覆產生一樣的亂數序列？</li>
+            <li class="next"><code>set.seed()</code></li>
+        </ul>
+        <pre class="language-r next">
+<code>set.seed(633) # 接下來的亂數每次都會一樣
+rnorm(1, 5, 10) # 17.36016
+rexp(1, 1) # 1.130437</code>
+        </pre>
+    </div></section>
+
+
+    <section id="sampling" class="slide"><div>
+        <h2>如何做樣本抽樣？</h2>
+        <p class="tighter">使用 <code>sample()</code> 函式</p>
+        <pre class="language-r">
+<code>set.seed(633)
+sample(1:10, size=5)  # 9 1 3 5 2
+# 取後可放回（樣本可重覆）
+sample(1:10, size=5, replace=TRUE)  # 10 5 3 10 6
+# 不限數字
+sample(c("m", "a", "9"))  # "9" "a" "m"
+</code>
+        </pre>
+    </div></section>
+
+
+    <section id="sample-weighted" class="slide"><div>
+        <p class="tighter">也可以給 sample 權重</p>
+        <pre class="language-r">
+<code>sample(
+  c("ma", "throw", "to", "slipper"),
+  prob=c(1, 2, 4, 8),
+  size=10, replace=TRUE
+)
+# [1] "slipper" "slipper" "to"
+# [4] "slipper" "slipper" "slipper" "slipper"
+# [8] "slipper" "ma"      "to"
+</code>
+        </pre>
+    </div></section>
+
+
+    <section id="num-comp-ex" class="slide"><div>
+        <h2>讓我們繼續說那位男生的故事</h2>
+        <ul>
+            <li class="next">公車一樣 15 分鐘來一班</li>
+            <li class="next">但男生其實是一個魯蛇，等不了那麼久</li>
+            <li class="next">「一台等太久，你有沒有試過等兩台？」</li>
+            <li class="next">如果一次等 \(N\) 位女生的公車。目標：8 成機率可以在 10 分鐘內等到</li>
+            <li class="next">求最小的 \(N\)</li>
+            <li class="next">嚴格地說，\(N\) 個女生都等要不同公車，且公車來的時間彼此獨立。</li>
+        </ul>
+    </div></section>
+
+
+    <section id="num-comp-ex-sol" class="slide"><div>
+        <h2>預想解法</h2>
+        <ul>
+            <li>假如我們不會算這個機率的理論值（或不好算）</li>
+            <li class="next">但如果我們模擬這個情況 5000 次<ul>
+                <li class="next">把能在 10 分鐘內等到 N 位女生任一台車
+                    訂為一次成功（<code>TRUE</code>)</li>
+                <li class="next">再算出來這 5000 次中成功的比率</li>
+                <li class="next">這個模擬值（抽樣），理應不會相距真實的機率太遠</li>
+            </ul></li>
+            <li class="next">能用程式模擬的就是小問題</li>
+        </ul>
+    </div></section>
+
+
+    <section id="num-comp-sol-code" class="slide twocol-ll"><div>
+        <div class="left">
+        <pre class="language-r small">
+<code>EXP_REP <- 5000  # 模擬次數
+early_arrival_p <- function(girl_n, th) {
+  exp.sim <- replicate(
+    EXP_REP,
+    any(rgamma(girl_n, 15, 1) <= th)
+  )
+  mean(exp.sim)  # return the rate having TRUE event
+}
+
+least.prob <- 0.8  # 超過 8 成機率
+# 猜 N 從 1 到 30 附近
+which.max(
+  sapply(1:30, function(n) early_arrival_p(n, 10)) > least.prob
+)  # return 19
+</code>
+        </pre></div><div class="right">
+            <ul>
+                <li><a href="http://"
+                       target="_blank">程式碼</a>
+                </li>
+                <li class="next">試著改模擬次數</li>
+                <li class="next">不同的分布，機率</li>
+                <li class="next">得到一個結果 19</li>
+                <li class="next">此題理論值不難求</li>
+            </ul>
+        </div>
+    </div></section>
+
+
+    <section id="num-comp-sol-theory" class="slide"><div>
+        <p>
+        $$\{T_i\}^N_{i=1} \overset{iid}{\sim} Gamma(15, 1)$$
+        </p><p>
+        $$\begin{align*}
+            &amp; P(T_{th} \text{ 分鐘有任一女生等到公車}) \\
+            &amp;= 1 - P(T_{th} \text{ 分鐘沒有女生等到公車}) \\
+            &amp;= 1 - P(T_1 > T_{th} \cap T_2 > T_{th} \cap \cdots \cap T_N > T_{th}) \\
+            &amp;= 1 - \prod_{i=1}^N P(T_i > T_{th}) \\
+            &amp;= 1 - \prod_{i=1}^N \left[ 1 - P(T_i \leq T_{th}) \right] > 0.8
+        \end{align*}$$
+        </p>
+    </div></section>
+
+
+    <section id="num-comp-sol-theory-contd" class="slide"><div>
+        <p>
+        $$\prod_{i=1}^N \left[ 1 - P(T_i \leq T_{th}) \right] = p^N < 0.2$$
+        $$~ p = 1 - P(T_i \leq T_{th})$$
+        </p>
+        <p class="next">
+            \(p\) 可由 <code>1 - pgamma(th, 15, 1)</code> 求得。<br />
+            最後可以得到 \(N\) 的最小值。<span class="next">在此 \(N\geq19\)</span>
+            $$
+                N > \frac{\log 0.2}{\log p}
+            $$
+        </p>
+    </div></section>
+
+
+    <section id="numerical-comp" class="slide"><div>
+        <h2>數值計算 Numerical Computation</h2>
+        <ul>
+            <li>Keywords: Monte Carlo, Bootstrap</li>
+            <li>統計的本值：使用樣本去估計母體性質<ul>
+                <li class="next">如果今天能用電腦模擬的方式抽樣很多次</li>
+                <li class="next">沒有解析解也能近似一些複雜的統計量</li>
+            </ul></li>
+            <li class="next">在越複雜的狀況，數值計算越顯得重要</li>
+            <li class="next">很可惜統計課都只能考些手算得出來的</li>
+        </ul>
+    </div></section>
+
+
+    <section id="hist" class="slide twocol"><div>
+        <h2>如何選擇一個理論分布</h2>
+        <div class="left">
+        <p class="tighter">手邊沒有資料玩的話，<br /><code>data()</code> 查詢內建的 datasets</p>
+        <p class="tighter next">以 <code>rock</code> 為例，<br />
+            <code>hist(rock$area)</code><br />
+            查看抽樣的分布</p>
+        <p class="tighter next">選擇常態分布，適不適合？</p>
+        </div><div class="right next">
+            <img src="r-fig/hist_rock.png" alt="" style="width: 100%;">
+        </div>
+    </div></section>
+
+
+    <section id="qqplot" class="slide twocol"><div>
+        <h2>使用 Quantile-Quantile Plot (QQ-Plot)</h2>
+        <div class="left">
+        <ul>
+            <li>兩個分布（X: 理論；Y: 抽樣）</li>
+            <li>對每一個 quantile 點找對應的值</li>
+            <li>兩個分配相近的話，會呈現 X=Y 線</li>
+        </ul>
+        <pre class="language-r">
+<code>qqnorm(rock$area)
+# or qqplot
+qqline(rock$area)
+</code>
+        </pre>
+        </div><div class="right next">
+            <img src="r-fig/qq_norm_rock.png" alt="" style="width: 100%;">
+        </div>
+    </div></section>
+
+
+    <section id="stat-test" class="slide twocol"><div>
+        <h2>統計檢定</h2>
+        <p class="tighter">我們學會了估計一個機率分布（點估計）。<br />
+            如果今天是區分兩組資料的平均值是不是「不一樣」…</p>
+        <div class="left next">
+            <center><p class="inline">這組蠻好判斷的</p></center>
+            <img src="r-fig/stat_test/dist_easy.png"
+                 width="100%" alt="">
+        </div><div class="right next">
+            <center><p class="inline">那這組呢？</p></center>
+            <img src="r-fig/stat_test/dist_close.png"
+                 width="100%" alt="">
+        </div>
+    </div></section>
+
+
+    <section id="stat-test-contd" class="slide"><div>
+        <ul>
+            <li>頻率（古典）學派中，制定了一套流程來處理這樣的問題</li>
+            <li class="next">也就是所謂的<em>統計檢定</em></li>
+            <li class="next">首先，聲稱一個假設（Ex. 兩個 \(\mu\) 相同）</li>
+            <li class="next">在這個假設下，計算出我們觀察到的結果發生的機率 \(P(\hat{\mu_1} = 4, \hat{\mu_2} = 50 | \mu_1 = \mu_2) = 0.005\)</li>
+            <li class="next">如果這個機率很小，表示在假設成立的情況下，我們的結果很難會發生</li>
+            <li class="next">假設很有可能是錯的（拒絕假設）</li>
+            <li class="next">完成一個統計檢定</li>
+        </ul>
+        <p class="next tighter">R 內建了大部份的檢定。</p>
+    </div></section>
+
+
+    <section id="reg-intro" class="slide"><div>
+        <h2>今天不能講太多的迴歸分析</h2>
+        <ul>
+            <li class="next">大家多少聽過。千年傳統，全新感受的做法</li>
+            <li class="next">蠻多生活中的現象，可能跟別的因素有所相關</li>
+            <li class="next">例如 $$
+                \text{施政滿意度} = \beta_0 + \beta_1 \text{外交情勢} + \beta_2 \text{食品安全} + \beta_3 \text{官員清廉度} + \cdots + \epsilon
+            $$</li>
+            <li class="next">迴歸不能判斷「因果關系」，但可以找出相關性高的因素</li>
+            <li class="next">在 R 裡面做也非常方便</li>
+        </ul>
+    </div></section>
+
+
+    <section id="reg-code" class="slide twocol-ll"><div>
+        <div class="left">
+            <pre class="language-r small">
+<code>> model.iris <- lm(
+  Sepal.Length ~ Petal.Length + Petal.Width,
+  data=iris
+)
+# 建立模型不會有任何 output
+> summary(model.iris)
+# ... trimmed ...
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept)   4.19058    0.09705  43.181  < 2e-16 ***
+Petal.Length  0.54178    0.06928   7.820 9.41e-13 ***
+Petal.Width  -0.31955    0.16045  -1.992   0.0483 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# ... trimmed ...
+</code>
+            </pre>
+        </div><div class="right next">
+            <p class="tighter">搜尋 Keyword</p>
+            <ul>
+                <li><code>formula</code></li>
+                <li><code>lm</code></li>
+                <li><code>confint</code></li>
+            </ul>
+        </div>
+    </div></section>
+
+
+    <section id="whats-next" class="slide"><div>
+        <h2>What's Next?</h2>
+        <ul>
+            <li class="next">點估計到區間估計、各種的假設檢定</li>
+            <li class="next">更多的迴歸分析</li>
+            <li class="next">頻率學派到貝氏學派</li>
+            <li class="next">有母數到無母數</li>
+            <li class="next">最重要的，也是馬上可以做的…</li>
+        </ul>
+        <center><h2 class="next" style="color: #EE1111;">加入 Taiwan R User Group!!</h2></center>
+        <div id="tw-r" class="next">
+            <img src="pics/twR_logo.png" width="100%" alt="">
+            <center><p>
+                <a href="http://www.meetup.com/Taiwan-R/"
+                    target="_blank">@Meetup</a>
+                <a href="https://www.youtube.com/user/TWuseRGroup"
+                    target="_blank">@Youtube</a>
+            </p></center>
+        </div>
+    </div><style>
+        #tw-r {
+            position: absolute;
+            width: 250px;
+            top: 100px;
+            right: 200px;
+        }
+    </style></section>
+
+    <!-- End Slide -->
+    <section id='end' class='slide shout cover w'><div>
+        <h2>Thank You!</h2>
+        <img src="pics/end_cover.jpg" alt="">
+        <p class="src-link">
+            pic source:
+            <a href="http://www.r-bloggers.com/mapping-the-worlds-biggest-airlines/"
+               target="_blank">
+                http://www.r-bloggers.com/mapping-the-worlds-biggest-airlines/
+            </a>
+        </p>
+    </div>
+    <style>
+        #end a {
+            color: #DDD;
+        }
+        #end h2 {
+            position: absolute;
+            top: 10%;
+            color: #DDD;
+            font-size: 80px;
+        }
+        #end .src-link {
+            position: absolute;
+            font-size: 14px;
+            color: #DDD;
+            text-align: right;
+            top: 85%;
+            right: 10px;
+        }
+    </style></section>
+
+    <!-- END OF SLIDE CONTENT -->
+
+    <p class="badge"><a href="https://github.com/ccwang002/2013-OSSF-R-Statistics">Fork me on Github</a></p>
+    <div class="progress"><div></div></div>
+
+    <!-- Library -->
+    <script src="lib/highlight/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="lib/shower/shower.min.js"></script>
+    <!-- Mathjax -->
+    <!-- During local development, use localhost mathjax for speed-->
+    <script src="file:///Users/liang/.ipython/profile_default/static/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- online Mathjax CDN -->
+    <!--
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    -->
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-42219381-3', 'ccwang002.github.io');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
