@@ -703,6 +703,25 @@ g + geom_bar(stat="bin") +
         }
     </style></section>
 
+
+    <section id="stack-bar-plot" class="slide twocol"><div>
+        <div class="left"><pre class="language-r small">
+<code>g <- ggplot(df.part,
+  aes(x=disp, y=number, fill=sex)) +
+  theme(text=element_text(
+    family="Heiti TC Medium",
+    size=18))
+
+g + geom_bar(stat="identity")
+
+g + geom_bar(stat="identity",
+             position="dodge")</code>
+</pre></div>
+    <div class="right">
+        <img src="r-fig/stack_bar.png" width="90%" alt="">
+    </div></div>
+    </section>
+
     <!-- End Slide -->
     <section id='end' class='slide shout cover w'><div>
         <h2>Thank You!</h2>

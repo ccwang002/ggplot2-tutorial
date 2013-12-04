@@ -8,7 +8,9 @@ colnames(df.ntu) <- c("disp", "total", "male", "female", "ratio")
 df.part <- df.ntu[c(1, 10, 20, 30, 40, 50, 56), ]
 ggplot(df.part, aes(x=disp, y=total)) + 
   geom_bar(stat='identity') + 
-  theme(text=element_text(family="Heiti TC Medium", size=10))
+  theme(text=element_text(
+    family="Heiti TC Medium", 
+    size=10))
 
 # Wide-to-Long
 df.part$ratio <- NULL
@@ -25,9 +27,16 @@ df.part <- melt(
 # 排序
 df.part <- df.part[order(df.part$disp), ]
 
-ggplot(df.part, aes(x=disp, y=number, fill=sex)) + 
-  geom_bar(stat="identity", position="dodge") +
-  theme(text=element_text(family="Heiti TC Medium", size=18))
+g <- ggplot(df.part, aes(x=disp, y=number, fill=sex)) + 
+  theme(text=element_text(
+    family="Heiti TC Medium", 
+    size=16))
+
+g + geom_bar(stat="identity") + theme(legend.position="top")
+
+g + geom_bar(stat="identity", position="dodge") + scale_fill_brewer(palette="Set3")
+
+g + geom_bar(stat="identity", position="dodge") + scale_fill_brewer(palette="Set1")
 
 
 # Long-to-Wide
