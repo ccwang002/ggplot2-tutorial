@@ -517,12 +517,13 @@ ggplot(mtcars, aes(x=wt, y=mpg, color=gear)) + geom_point()</code>
         </div>
     </div></section>
 
+
     <section id="aes-scatter-scale" class="slide twocol"><div>
         <div class="left">
             <p class="tighter">如果要更改一系列設的值，用 <code>scale_xxx(...)</code></p>
              <pre class="language-r tighter small">
 <code>g <- ggplot(
-  mtcars, 
+  mtcars,
   aes(x=wt, y=mpg, color=gear)
 )
 # 更改指定的顏色，目前是連續的
@@ -543,9 +544,9 @@ g + geom_point(size=5) +
             <p class="tighter">今天 <code>gear</code> 其實只有幾個值</p>
              <pre class="language-r tighter small">
 <code>g <- ggplot(
-  mtcars, 
+  mtcars,
   aes(x=wt, y=mpg, color=factor(gear))
-) + geom_point(size=5) + theme_bw(16) + 
+) + geom_point(size=5) + theme_bw(16) +
   theme(legend.position="top")
 g  # 印預設結果
 # 手動改顏色
@@ -561,20 +562,20 @@ g + scale_color_brewer(palette="Set3")
         </div>
     </div></section>
 
-    
+
     <section id="aes-scatter-combined" class="slide twocol"><div>
         <div class="left">
             <p class="tighter">可以一次更改很多東西</p>
              <pre class="language-r tighter small">
 <code>g <- ggplot(
-  mtcars, 
+  mtcars,
   aes(x=wt, y=mpg,
-      color=factor(gear), 
+      color=factor(gear),
       size=factor(gear)
-)) + theme_bw(16) + 
+)) + theme_bw(16) +
   theme(legend.position="top")
 
-g + geom_point(alpha=0.7) + 
+g + geom_point(alpha=0.7) +
   scale_size_discrete(range=c(4, 10))
 </code>
             </pre>
@@ -589,12 +590,12 @@ g + geom_point(alpha=0.7) +
             <p class="tighter">其他類型的圖都是同樣規則</p>
             <pre class="language-r tighter small">
 <code>g <- ggplot(mtcars, aes(
-  x=factor(cyl), 
+  x=factor(cyl),
   fill=factor(cyl)
 ))
 
-g + geom_bar(stat="bin") + 
-  scale_fill_brewer(palette="Set2") + 
+g + geom_bar(stat="bin") +
+  scale_fill_brewer(palette="Set2") +
   theme_classic()
 
 # 試著把 fill 改成 color
@@ -605,7 +606,103 @@ g + geom_bar(stat="bin") +
         </div>
     </div></section>
 
-    
+
+    <section id="further-reading" class="slide twocol"><div>
+        <h2>延伸閱讀</h2>
+        <div class="left">
+            <p class="inline">R 基礎語法</p>
+            <center><img src="pics/R_cookbook.jpg" width="70%" alt=""></center>
+        </div><div class="right">
+            <p class="inline">ggplot2 完整介紹</p>
+            <center><img src="pics/R_graphics_cookbook.jpg" width="70%" alt=""></center>
+        </div>
+    </div></section>
+
+
+    <section id="wide-to-long" class="slide"><div>
+        <h2>回到一開始的例子</h2>
+        <ul>
+            <li>今天希望畫的是每科系的男女人數的 bar plot</li>
+            <li>希望以科系分群(Grouped)</li>
+            <li>先只取部份的科系</li>
+            <li>原來的格式 1 row 有「男」、「女」兩個資料，故要做轉換</li>
+            <li>稱這種轉換為 <b>Wide-to-Long</b></li>
+        </ul>
+    </div></section>
+
+
+    <section id="wide-to-long-demo" class="slide twocol"><div>
+        <div class="left">
+            <p class="inline"><code>melt()</code> ==></p>
+            <table>
+                <tr>
+                    <td>科系名 (disp)</td>
+                    <td>男 (male)</td>
+                    <td>女 (female)</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>5</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>6</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>9</td>
+                    <td>18</td>
+                </tr>
+            </table>
+        </div><div class="right">
+            <p class="inline"><== <code>dcast()</code></p>
+            <table>
+                <tr>
+                    <td>科系名 (disp)</td>
+                    <td>性別 (sex)</td>
+                    <td>人數 (number)</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>male</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>female</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>male</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>female</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>male</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>female</td>
+                    <td>18</td>
+                </tr>
+            </table>
+        </div>
+    </div><style>
+        #wide-to-long-demo table {
+            width: 90%;
+            margin: 0 0 20px;
+        }
+    </style></section>
+
     <!-- End Slide -->
     <section id='end' class='slide shout cover w'><div>
         <h2>Thank You!</h2>
