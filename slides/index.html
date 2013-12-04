@@ -138,7 +138,7 @@
         #cover p a {
             color: #DDD;
         }
-        <D-r>#cover .src-link {
+        #cover .src-link {
             position: absolute;
             font-size: 14px;
             text-align: right;
@@ -226,6 +226,7 @@
     <section id="google-ggplot2" class="slide"><div>
             <center><img width="90%" src="pics/google_ggplot2.png" alt=""></center>
     </div></section>
+
 
     <section id="common-problems" class="slide"><div>
         <h2>自己的經驗，常碰到的問題</h2>
@@ -632,6 +633,7 @@ g + geom_bar(stat="bin") +
 
 
     <section id="wide-to-long-demo" class="slide twocol"><div>
+        <p class="inline">使用 <code>library(reshape2)</code></p>
         <div class="left">
             <p class="inline"><code>melt()</code> ==></p>
             <table>
@@ -704,6 +706,28 @@ g + geom_bar(stat="bin") +
     </style></section>
 
 
+    <section id="wide-to-long-code" class="slide"><div>
+        <pre class="language-r small">
+<code>library(reshape2)
+df.ntu <- read.csv('NTU_B02new_sexratio.csv')
+colnames(df.ntu) <- c("disp", "total", "male", "female", "ratio")
+
+# 只取一部份的資料
+df.part <- df.ntu[c(1, 10, 20, 30, 40, 50, 56), ]
+df.part$ratio <- NULL
+df.part$total <- NULL
+
+# Wide-to-Long
+df.part <- melt(
+  df.part,             # data.frame
+  id.vars="disp",      # 每行固定出現的 (disp)
+  variable.name="sex", # 多欄合併後欄位名 (存 male/female)
+  value.name="number"  # 放值的地方
+)</code>
+        </pre>
+    </div></section>
+
+
     <section id="stack-bar-plot" class="slide twocol"><div>
         <div class="left"><pre class="language-r small">
 <code>g <- ggplot(df.part,
@@ -712,8 +736,10 @@ g + geom_bar(stat="bin") +
     family="Heiti TC Medium",
     size=18))
 
+# Stack 男女疊在一起
 g + geom_bar(stat="identity")
 
+# Dodge 同科系男女靠比較近
 g + geom_bar(stat="identity",
              position="dodge")</code>
 </pre></div>
@@ -767,7 +793,7 @@ g + geom_bar(stat="identity",
     <script src="lib/shower/shower.min.js"></script>
     <!-- Mathjax -->
     <!-- During local development, use localhost mathjax for speed-->
-    <script src="file:///Users/liang/.ipython/profile_default/static/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!--<script src="file:///Users/liang/.ipython/profile_default/static/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
     <!-- online Mathjax CDN -->
     <!--
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
