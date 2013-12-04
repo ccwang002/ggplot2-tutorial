@@ -1,6 +1,7 @@
 # R Visualization Using ggplot2
 
-Present at 2013.12.04.
+Present at 2013.12.04. Screencast at <http://youtu.be/vWiyivna9WY>.
+
 
 ## Older Slides
 
@@ -15,8 +16,8 @@ The slide is powered by
 
 Their origin licenses are at `slides/lib/shower/License.md` and `slides/lib/highlight.js/LICENSE` respectively.
 
-除另外標示，本投影片內容（`slides` 目錄下）係使用創用 CC 姓名標示 3.0 台灣（CC3.0 BY TW）授權條款授權；程式碼係使用 MIT 授權。授權條款可以分別參見 `LICENSE_CC` 與其[網路複本][LICENSE-LINK]以及 `LICENSE_MIT`。
+除另外標示，本投影片內容（`slides` 目錄下）係使用創用 CC 姓名標示 4.0 台灣（CC3.0 BY International）授權條款授權；程式碼係使用 MIT 授權。授權條款可以分別參見 `LICENSE` 與其[網路複本][LICENSE-LINK]以及 `LICENSE_MIT`。
 
 [shower.js]: https://github.com/shower/shower
 [highlight.js]: http://highlightjs.org/
-[LICENSE-LINK]: http://creativecommons.org/licenses/by/3.0/tw/deed.zh_TW
+[LICENSE-LINK]: http://creativecommons.org/licenses/by/4.0/deed.zh_TW
